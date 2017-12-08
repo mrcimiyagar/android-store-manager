@@ -1,0 +1,1222 @@
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="kasper.android.store_manager.fragments.ItemsFragment">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="64dp">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="7dp"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="right|center_vertical"
+                            android:layout_marginRight="16dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="right|center_vertical"
+                                android:text="8 نوع کالا"
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginRight="8dp"/>
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:padding="8dp"
+                                android:src="@drawable/item_type"
+                                android:tint="#fff"
+                                android:background="@drawable/circle"
+                                android:backgroundTint="@color/color2"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="right|center_vertical"
+                            android:layout_marginRight="16dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="right|center_vertical"
+                                android:text="ارزش کل"
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginRight="8dp"/>
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_money"
+                                android:tint="#fff"
+                                android:background="@drawable/circle"
+                                android:backgroundTint="@color/color2"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="right|center_vertical"
+                            android:layout_marginRight="16dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="right|center_vertical"
+                                android:text="25 واحد کالا"
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginRight="8dp"/>
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:padding="8dp"
+                                android:src="@drawable/item"
+                                android:tint="#fff"
+                                android:background="@drawable/circle"
+                                android:backgroundTint="@color/color2"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:orientation="horizontal"
+                            android:gravity="right|center_vertical"
+                            android:layout_marginRight="16dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="right|center_vertical"
+                                android:text="4 دسته کالا"
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginRight="8dp"/>
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:padding="8dp"
+                                android:src="@drawable/category"
+                                android:tint="#fff"
+                                android:background="@drawable/circle"
+                                android:backgroundTint="@color/color2"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="7dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="16dp">
+
+                                <TextView
+                                    android:layout_width="84dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="منقضی شده"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_marginRight="8dp"/>
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/over_deadline"
+                                    android:tint="#fff"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="@color/colorAccent"/>
+
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="16dp">
+
+                                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                    android:layout_width="112dp"
+                                    android:layout_height="112dp"
+                                    android:layout_centerInParent="true"
+                                    app:cpb_progress="16"
+                                    app:cpb_background_progressbar_color="#ccc"
+                                    app:cpb_background_progressbar_width="12dp"
+                                    app:cpb_progressbar_color="@color/colorAccent"
+                                    app:cpb_progressbar_width="16dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:text="16%"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"/>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="16dp">
+
+                                <TextView
+                                    android:layout_width="84dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="14 واحد کالا"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_marginRight="8dp"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"/>
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/ic_item"
+                                    android:tint="#fff"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="@color/colorAccent"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <FrameLayout
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorPrimary"
+                            android:layout_marginTop="16dp"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="16dp">
+
+                                <TextView
+                                    android:layout_width="84dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="نزدیک انقضا"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_marginRight="8dp"/>
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/over_deadline"
+                                    android:tint="#fff"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="@color/colorAccent"/>
+
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="16dp">
+
+                                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                    android:layout_width="112dp"
+                                    android:layout_height="112dp"
+                                    android:layout_centerInParent="true"
+                                    app:cpb_progress="26"
+                                    app:cpb_background_progressbar_color="#ccc"
+                                    app:cpb_background_progressbar_width="12dp"
+                                    app:cpb_progressbar_color="@color/colorAccent"
+                                    app:cpb_progressbar_width="16dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:text="26%"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"/>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="16dp">
+
+                                <TextView
+                                    android:layout_width="84dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="23 واحد کالا"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_marginRight="8dp"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"/>
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/ic_item"
+                                    android:tint="#fff"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="@color/colorAccent"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/colorPrimary"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="16dp">
+
+                                <TextView
+                                    android:layout_width="84dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="موجودی کم"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_marginRight="8dp"/>
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/over_deadline"
+                                    android:tint="#fff"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="@color/colorAccent"/>
+
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="16dp">
+
+                                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                    android:layout_width="112dp"
+                                    android:layout_height="112dp"
+                                    android:layout_centerInParent="true"
+                                    app:cpb_progress="65"
+                                    app:cpb_background_progressbar_color="#ccc"
+                                    app:cpb_background_progressbar_width="12dp"
+                                    app:cpb_progressbar_color="@color/colorAccent"
+                                    app:cpb_progressbar_width="16dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:text="65%"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"/>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="16dp">
+
+                                <TextView
+                                    android:layout_width="84dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="6 دسته کالا"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_marginRight="8dp"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"/>
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/ic_item"
+                                    android:tint="#fff"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="@color/colorAccent"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <FrameLayout
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorPrimary"
+                            android:layout_marginBottom="16dp"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="16dp">
+
+                                <TextView
+                                    android:layout_width="84dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="تازه ثبت شده"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_marginRight="8dp"/>
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/over_deadline"
+                                    android:tint="#fff"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="@color/colorAccent"/>
+
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="16dp">
+
+                                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                    android:layout_width="112dp"
+                                    android:layout_height="112dp"
+                                    android:layout_centerInParent="true"
+                                    app:cpb_progress="32"
+                                    app:cpb_background_progressbar_color="#ccc"
+                                    app:cpb_background_progressbar_width="12dp"
+                                    app:cpb_progressbar_color="@color/colorAccent"
+                                    app:cpb_progressbar_width="16dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:text="32%"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"/>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="16dp">
+
+                                <TextView
+                                    android:layout_width="84dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="36 واحد کالا"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:layout_marginRight="8dp"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"/>
+
+                                <ImageView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:padding="8dp"
+                                    android:src="@drawable/ic_item"
+                                    android:tint="#fff"
+                                    android:background="@drawable/circle"
+                                    android:backgroundTint="@color/colorAccent"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="7dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|right"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="تاریخچه ی نزدیک انقضا :"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="100"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="75"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="50"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="25"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="0"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                        </LinearLayout>
+
+                        <com.db.chart.view.LineChartView
+                            android:id="@+id/fragment_items_line_chart_view_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/chart2_time"
+                            android:layout_marginLeft="8dp"
+                            app:chart_axis="false"
+                            app:chart_axisBorderSpacing="0dp"
+                            app:chart_axisColor="#30547d99"
+                            app:chart_labelColor="#304a00"
+                            app:chart_labels="none" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginLeft="48dp"
+                        android:layout_marginRight="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="27\nآبان"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="2\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="7\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="12\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="17\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="7dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|right"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="تاریخچه ی منقضی شده :"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="100"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="75"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="50"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="25"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="0"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                        </LinearLayout>
+
+                        <com.db.chart.view.LineChartView
+                            android:id="@+id/fragment_items_line_chart_view_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/chart2_time"
+                            android:layout_marginLeft="8dp"
+                            app:chart_axis="false"
+                            app:chart_axisBorderSpacing="0dp"
+                            app:chart_axisColor="#30547d99"
+                            app:chart_labelColor="#304a00"
+                            app:chart_labels="none" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginLeft="48dp"
+                        android:layout_marginRight="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="27\nآبان"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="2\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="7\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="12\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="17\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="7dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|right"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="تاریخچه ی تازه ثبت شده :"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="100"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="75"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="50"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="25"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="0"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                        </LinearLayout>
+
+                        <com.db.chart.view.LineChartView
+                            android:id="@+id/fragment_items_line_chart_view_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/chart2_time"
+                            android:layout_marginLeft="8dp"
+                            app:chart_axis="false"
+                            app:chart_axisBorderSpacing="0dp"
+                            app:chart_axisColor="#30547d99"
+                            app:chart_labelColor="#304a00"
+                            app:chart_labels="none" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginLeft="48dp"
+                        android:layout_marginRight="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="27\nآبان"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="2\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="7\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="12\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="17\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="7dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|right"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="تاریخچه ی موجودی کم :"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="100"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="75"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="50"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="25"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="0"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:gravity="bottom"/>
+
+                        </LinearLayout>
+
+                        <com.db.chart.view.LineChartView
+                            android:id="@+id/fragment_items_line_chart_view_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/chart2_time"
+                            android:layout_marginLeft="8dp"
+                            app:chart_axis="false"
+                            app:chart_axisBorderSpacing="0dp"
+                            app:chart_axisColor="#30547d99"
+                            app:chart_labelColor="#304a00"
+                            app:chart_labels="none" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginLeft="48dp"
+                        android:layout_marginRight="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="27\nآبان"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="2\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="7\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="12\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="17\nآذر"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
