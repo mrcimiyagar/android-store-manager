@@ -4,12 +4,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-public class StorePagerAdapter extends FragmentStatePagerAdapter {
+public class PagerAdapter extends FragmentStatePagerAdapter {
 
     private String[] titles;
     private Fragment[] fragments;
 
-    public StorePagerAdapter(FragmentManager fm, String[] titles, Fragment[] fragments) {
+    public PagerAdapter(FragmentManager fm, String[] titles, Fragment[] fragments) {
         super(fm);
         this.titles = titles;
         this.fragments = fragments;

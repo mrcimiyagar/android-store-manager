@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item"
+        android:icon="@drawable/ic_item"
+        android:title="کالا" />
+
+    <item
+        android:id="@+id/menu_category"
+        android:icon="@drawable/ic_category"
+        android:title="دسته" />
+
+    <item
+        android:id="@+id/menu_order"
+        android:icon="@drawable/ic_order"
+        android:title="سفارش" />
+
+    <item
+        android:id="@+id/menu_factory"
+        android:icon="@drawable/ic_factory"
+        android:title="کارخانه" />
+
+    <item
+        android:id="@+id/menu_customer"
+        android:icon="@drawable/ic_customer"
+        android:title="مشتری" />
+
+</menu>

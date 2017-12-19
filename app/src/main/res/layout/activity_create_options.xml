@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_alignParentBottom="true"
+    android:background="@color/colorPrimary"
+    tools:context=".activities.CreateOptionsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="ساخت ..."
+        android:textColor="#fff"
+        android:gravity="center_vertical"
+        android:paddingRight="24dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@color/colorPrimary"
+        android:elevation="2dp"
+        tools:targetApi="lollipop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="12dp">
+
+        <LinearLayout
+            android:id="@+id/create_menu_item_view"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="کالا"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_item"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/create_menu_category_view"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="right">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="دسته"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_category"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/create_menu_order_view"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="right">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="سفارش"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_order"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/create_menu_factory_view"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="right">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="کارخانه"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_factory"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/create_menu_customer_view"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="مشتری"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_customer"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

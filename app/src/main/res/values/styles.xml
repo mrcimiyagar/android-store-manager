@@ -1,16 +1,51 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.TransparentStatus" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowActionBarOverlay">true</item>
     </style>
 
     <style name="AppTheme.TabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="AppTheme.BottomSheet" parent="@style/BottomSheet">
+        <item name="bottom_sheet_bg_color">@color/colorPrimary</item>
+        <item name="bottom_sheet_title_text_appearance">@style/TitleAppearance</item>
+        <item name="bottom_sheet_list_text_appearance">@style/ListAppearance</item>
+        <item name="bottom_sheet_grid_text_appearance">@style/GridAppearance</item>
+    </style>
+
+    <style name="TitleAppearance" parent="BottomSheet.Title.TextAppearance">
+        <item name="android:textColor">@android:color/holo_green_light</item>
+    </style>
+
+    <style name="ListAppearance" parent="BottomSheet.ListItem.TextAppearance">
+        <item name="android:textColor">@android:color/holo_red_light</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="GridAppearance" parent="BottomSheet.GridItem.TextAppearance">
+        <item name="android:textColor">@android:color/holo_red_light</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>

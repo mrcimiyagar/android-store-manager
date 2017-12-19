@@ -70,7 +70,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginRight="32dp"
-                android:text="وضعیت کالا ها :"
+                android:text="وضعیت سفارش ها :"
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
@@ -111,7 +111,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="right|center_vertical"
-                                android:text="8 نوع کالا"
+                                android:text="4 تولید کننده"
                                 android:textStyle="bold"
                                 android:textSize="16sp"
                                 android:layout_marginRight="8dp"/>
@@ -139,7 +139,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="right|center_vertical"
-                                android:text="4 دسته کالا"
+                                android:text="25 مشتری"
                                 android:textStyle="bold"
                                 android:textSize="16sp"
                                 android:layout_marginRight="8dp"/>
@@ -175,7 +175,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="right|center_vertical"
-                                android:text="15 میلیون تومان"
+                                android:text="7 میلیون تومان"
                                 android:textStyle="bold"
                                 android:textSize="16sp"
                                 android:layout_marginRight="8dp"/>
@@ -203,7 +203,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="right|center_vertical"
-                                android:text="25 واحد کالا"
+                                android:text="36 سفارش"
                                 android:textStyle="bold"
                                 android:textSize="16sp"
                                 android:layout_marginRight="8dp"/>
@@ -225,15 +225,92 @@
 
             </android.support.v7.widget.CardView>
 
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="14dp"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:orientation="horizontal"
+                        android:gravity="right|center_vertical"
+                        android:layout_marginRight="16dp">
+
+                        <TextView
+                            android:id="@+id/fragment_orders_confirmed_price_text_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="4 سفارش با قیمت تایید شده"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginRight="8dp"/>
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:padding="8dp"
+                            android:src="@drawable/item_type"
+                            android:tint="#fff"
+                            android:background="@drawable/circle"
+                            android:backgroundTint="@color/color2"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:orientation="horizontal"
+                        android:gravity="right|center_vertical"
+                        android:layout_marginRight="16dp">
+
+                        <TextView
+                            android:id="@+id/fragment_orders_arrived_item_text_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center_vertical"
+                            android:text="4 سفارش موجود شده"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginRight="8dp"/>
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_category"
+                            android:tint="#fff"
+                            android:background="@drawable/circle"
+                            android:backgroundTint="@color/color2"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="84dp"
                 android:visibility="visible"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/fragment_items_items_open_container"
+                    android:id="@+id/fragment_orders_factories_open_container"
                     android:layout_width="0dp"
                     android:layout_height="56dp"
                     android:layout_weight="1"
@@ -245,7 +322,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="لیست کالا ها"
+                        android:text="لیست کارخانه ها"
                         android:textSize="18sp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="24dp"
@@ -255,7 +332,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/fragment_items_categories_open_container"
+                    android:id="@+id/fragment_orders_orders_open_container"
                     android:layout_width="0dp"
                     android:layout_height="56dp"
                     android:layout_weight="1"
@@ -268,7 +345,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="لیست دسته ها"
+                        android:text="لیست سفارش ها"
                         android:textSize="18sp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="24dp"
@@ -279,14 +356,45 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:visibility="visible"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/fragment_orders_customers_open_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="56dp"
+                    app:cardBackgroundColor="@color/colorAccent"
+                    app:cardCornerRadius="24dp"
+                    android:layout_marginLeft="64dp"
+                    android:layout_marginRight="64dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="لیست مشتری ها"
+                        android:textSize="18sp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="48dp"
+                        android:layout_marginRight="48dp"
+                        android:textColor="#fff"/>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginRight="32dp"
-                android:text="زمان بندی کالا ها :"
+                android:text="مراحل سفارش ها :"
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
@@ -304,404 +412,194 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1">
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:layout_weight="1">
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp">
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="84dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="16dp">
+                                android:text="منقضی شده"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginRight="8dp"/>
 
-                                <TextView
-                                    android:layout_width="84dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="منقضی شده"
-                                    android:textColor="#000"
-                                    android:textSize="16sp"
-                                    android:layout_gravity="right|center_vertical"
-                                    android:layout_marginRight="8dp"/>
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:padding="8dp"
-                                    android:src="@drawable/over_deadline"
-                                    android:tint="#fff"
-                                    android:background="@drawable/circle"
-                                    android:backgroundTint="@color/colorAccent"/>
-
-                            </LinearLayout>
-
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="16dp">
-
-                                <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                                    android:id="@+id/fragment_items_passed_dead_line_progress_bar"
-                                    android:layout_width="112dp"
-                                    android:layout_height="112dp"
-                                    android:layout_centerInParent="true"
-                                    app:cpb_progress="16"
-                                    app:cpb_background_progressbar_color="#ccc"
-                                    app:cpb_background_progressbar_width="12dp"
-                                    app:cpb_progressbar_color="@color/colorAccent"
-                                    app:cpb_progressbar_width="16dp" />
-
-                                <TextView
-                                    android:id="@+id/fragment_items_passed_dead_line_text_view"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerInParent="true"
-                                    android:text="16%"
-                                    android:textColor="#000"
-                                    android:textSize="20sp"/>
-
-                            </RelativeLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="16dp">
-
-                                <TextView
-                                    android:id="@+id/fragment_items_passed_dead_line_count_text_view"
-                                    android:layout_width="84dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="14 واحد کالا"
-                                    android:layout_gravity="right|center_vertical"
-                                    android:layout_marginRight="8dp"
-                                    android:textColor="#000"
-                                    android:textSize="16sp"/>
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:padding="8dp"
-                                    android:src="@drawable/ic_item"
-                                    android:tint="#fff"
-                                    android:background="@drawable/circle"
-                                    android:backgroundTint="@color/colorAccent"/>
-
-                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:padding="8dp"
+                                android:src="@drawable/over_deadline"
+                                android:tint="#fff"
+                                android:background="@drawable/circle"
+                                android:backgroundTint="@color/colorAccent"/>
 
                         </LinearLayout>
 
-                        <FrameLayout
-                            android:layout_width="0.5dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorPrimary"
-                            android:layout_marginTop="16dp"/>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="16dp">
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/fragment_items_passed_dead_line_progress_bar"
+                                android:layout_width="112dp"
+                                android:layout_height="112dp"
+                                android:layout_centerInParent="true"
+                                app:cpb_progress="16"
+                                app:cpb_background_progressbar_color="#ccc"
+                                app:cpb_background_progressbar_width="12dp"
+                                app:cpb_progressbar_color="@color/colorAccent"
+                                app:cpb_progressbar_width="16dp" />
+
+                            <TextView
+                                android:id="@+id/fragment_items_passed_dead_line_text_view"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="16%"
+                                android:textColor="#000"
+                                android:textSize="20sp"/>
+
+                        </RelativeLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:layout_weight="1">
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp">
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/fragment_items_passed_dead_line_count_text_view"
+                                android:layout_width="84dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="16dp">
+                                android:text="14 واحد کالا"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginRight="8dp"
+                                android:textColor="#000"
+                                android:textSize="16sp"/>
 
-                                <TextView
-                                    android:layout_width="84dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="نزدیک انقضا"
-                                    android:textColor="#000"
-                                    android:textSize="16sp"
-                                    android:layout_gravity="right|center_vertical"
-                                    android:layout_marginRight="8dp"/>
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:padding="8dp"
-                                    android:src="@drawable/over_deadline"
-                                    android:tint="#fff"
-                                    android:background="@drawable/circle"
-                                    android:backgroundTint="@color/colorAccent"/>
-
-                            </LinearLayout>
-
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="16dp">
-
-                                <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                                    android:id="@+id/fragment_items_near_dead_line_progress_bar"
-                                    android:layout_width="112dp"
-                                    android:layout_height="112dp"
-                                    android:layout_centerInParent="true"
-                                    app:cpb_progress="26"
-                                    app:cpb_background_progressbar_color="#ccc"
-                                    app:cpb_background_progressbar_width="12dp"
-                                    app:cpb_progressbar_color="@color/colorAccent"
-                                    app:cpb_progressbar_width="16dp" />
-
-                                <TextView
-                                    android:id="@+id/fragment_items_near_dead_line_text_view"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerInParent="true"
-                                    android:text="26%"
-                                    android:textColor="#000"
-                                    android:textSize="20sp"/>
-
-                            </RelativeLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="16dp">
-
-                                <TextView
-                                    android:id="@+id/fragment_items_near_dead_line_count_text_view"
-                                    android:layout_width="84dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="23 واحد کالا"
-                                    android:layout_gravity="right|center_vertical"
-                                    android:layout_marginRight="8dp"
-                                    android:textColor="#000"
-                                    android:textSize="16sp"/>
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:padding="8dp"
-                                    android:src="@drawable/ic_item"
-                                    android:tint="#fff"
-                                    android:background="@drawable/circle"
-                                    android:backgroundTint="@color/colorAccent"/>
-
-                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_item"
+                                android:tint="#fff"
+                                android:background="@drawable/circle"
+                                android:backgroundTint="@color/colorAccent"/>
 
                         </LinearLayout>
 
                     </LinearLayout>
 
                     <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
                         android:background="@color/colorPrimary"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"/>
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"/>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1">
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:layout_weight="1">
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp">
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="84dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="16dp">
+                                android:text="نزدیک انقضا"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginRight="8dp"/>
 
-                                <TextView
-                                    android:layout_width="84dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="موجودی کم"
-                                    android:textColor="#000"
-                                    android:textSize="16sp"
-                                    android:layout_gravity="right|center_vertical"
-                                    android:layout_marginRight="8dp"/>
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:padding="8dp"
-                                    android:src="@drawable/over_deadline"
-                                    android:tint="#fff"
-                                    android:background="@drawable/circle"
-                                    android:backgroundTint="@color/colorAccent"/>
-
-                            </LinearLayout>
-
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="16dp">
-
-                                <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                                    android:id="@+id/fragment_items_near_end_progress_bar"
-                                    android:layout_width="112dp"
-                                    android:layout_height="112dp"
-                                    android:layout_centerInParent="true"
-                                    app:cpb_progress="65"
-                                    app:cpb_background_progressbar_color="#ccc"
-                                    app:cpb_background_progressbar_width="12dp"
-                                    app:cpb_progressbar_color="@color/colorAccent"
-                                    app:cpb_progressbar_width="16dp" />
-
-                                <TextView
-                                    android:id="@+id/fragment_items_near_end_text_view"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerInParent="true"
-                                    android:text="65%"
-                                    android:textColor="#000"
-                                    android:textSize="20sp"/>
-
-                            </RelativeLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="16dp">
-
-                                <TextView
-                                    android:id="@+id/fragment_items_near_end_count_text_view"
-                                    android:layout_width="84dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="6 دسته کالا"
-                                    android:layout_gravity="right|center_vertical"
-                                    android:layout_marginRight="8dp"
-                                    android:textColor="#000"
-                                    android:textSize="16sp"/>
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:padding="8dp"
-                                    android:src="@drawable/ic_item"
-                                    android:tint="#fff"
-                                    android:background="@drawable/circle"
-                                    android:backgroundTint="@color/colorAccent"/>
-
-                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:padding="8dp"
+                                android:src="@drawable/over_deadline"
+                                android:tint="#fff"
+                                android:background="@drawable/circle"
+                                android:backgroundTint="@color/colorAccent"/>
 
                         </LinearLayout>
 
-                        <FrameLayout
-                            android:layout_width="0.5dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorPrimary"
-                            android:layout_marginBottom="16dp"/>
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="16dp">
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/fragment_items_near_dead_line_progress_bar"
+                                android:layout_width="112dp"
+                                android:layout_height="112dp"
+                                android:layout_centerInParent="true"
+                                app:cpb_progress="26"
+                                app:cpb_background_progressbar_color="#ccc"
+                                app:cpb_background_progressbar_width="12dp"
+                                app:cpb_progressbar_color="@color/colorAccent"
+                                app:cpb_progressbar_width="16dp" />
+
+                            <TextView
+                                android:id="@+id/fragment_items_near_dead_line_text_view"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="26%"
+                                android:textColor="#000"
+                                android:textSize="20sp"/>
+
+                        </RelativeLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:layout_weight="1">
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp">
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/fragment_items_near_dead_line_count_text_view"
+                                android:layout_width="84dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="16dp">
+                                android:text="23 واحد کالا"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginRight="8dp"
+                                android:textColor="#000"
+                                android:textSize="16sp"/>
 
-                                <TextView
-                                    android:layout_width="84dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="تازه ثبت شده"
-                                    android:textColor="#000"
-                                    android:textSize="16sp"
-                                    android:layout_gravity="right|center_vertical"
-                                    android:layout_marginRight="8dp"/>
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:padding="8dp"
-                                    android:src="@drawable/over_deadline"
-                                    android:tint="#fff"
-                                    android:background="@drawable/circle"
-                                    android:backgroundTint="@color/colorAccent"/>
-
-                            </LinearLayout>
-
-                            <RelativeLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="16dp">
-
-                                <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                                    android:id="@+id/fragment_items_recently_registered_progress_bar"
-                                    android:layout_width="112dp"
-                                    android:layout_height="112dp"
-                                    android:layout_centerInParent="true"
-                                    app:cpb_progress="32"
-                                    app:cpb_background_progressbar_color="#ccc"
-                                    app:cpb_background_progressbar_width="12dp"
-                                    app:cpb_progressbar_color="@color/colorAccent"
-                                    app:cpb_progressbar_width="16dp" />
-
-                                <TextView
-                                    android:id="@+id/fragment_items_recently_registered_text_view"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerInParent="true"
-                                    android:text="32%"
-                                    android:textColor="#000"
-                                    android:textSize="20sp"/>
-
-                            </RelativeLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="16dp">
-
-                                <TextView
-                                    android:id="@+id/fragment_items_recently_registered_count_text_view"
-                                    android:layout_width="84dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="36 واحد کالا"
-                                    android:layout_gravity="right|center_vertical"
-                                    android:layout_marginRight="8dp"
-                                    android:textColor="#000"
-                                    android:textSize="16sp"/>
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:padding="8dp"
-                                    android:src="@drawable/ic_item"
-                                    android:tint="#fff"
-                                    android:background="@drawable/circle"
-                                    android:backgroundTint="@color/colorAccent"/>
-
-                            </LinearLayout>
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_item"
+                                android:tint="#fff"
+                                android:background="@drawable/circle"
+                                android:backgroundTint="@color/colorAccent"/>
 
                         </LinearLayout>
 

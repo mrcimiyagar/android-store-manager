@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="160dp">
+
+            <TextView
+                android:id="@+id/adapter_categories_name_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="کفش ها"
+                android:layout_gravity="right"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/adapter_categories_category_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6 دسته"
+                android:layout_gravity="right"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/adapter_categories_item_type_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6 نوع کالا"
+                android:layout_gravity="right"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/adapter_categories_item_unit_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15 واحد کالا"
+                android:layout_gravity="right"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/shoes_wallpaper"
+            android:layout_gravity="right"/>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

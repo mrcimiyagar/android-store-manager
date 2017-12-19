@@ -1,8 +1,10 @@
-package kasper.android.store_manager.models;
+package kasper.android.store_manager.models.database;
 
-public class Item {
+import io.realm.RealmObject;
 
-    private int itemId;
+public class Item extends RealmObject {
+
+    private int id;
     private String title;
     private float price;
     private int count;
@@ -11,12 +13,12 @@ public class Item {
     private long deadLineTime;
     private long lastModifiedTime;
 
-    public int getItemId() {
-        return itemId;
+    public int getId() {
+        return id;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

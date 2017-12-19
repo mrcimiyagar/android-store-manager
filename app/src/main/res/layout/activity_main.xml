@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/colorPrimary"
-    tools:context="kasper.android.store_manager.activities.MainActivity">
+    tools:context="kasper.android.store_manager.activities.DashboardActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/activity_main_app_bar"
@@ -16,6 +16,7 @@
         android:layout_height="304dp">
 
         <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/activity_main_collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -32,14 +33,16 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#8000"/>
+                android:background="#a000"/>
 
             <LinearLayout
+                android:id="@+id/activity_main_profile_open_max_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:onClick="onProfileBtnClicked">
 
                 <android.support.v7.widget.CardView
                     android:layout_width="88dp"
@@ -68,12 +71,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="112dp"
                 android:background="@drawable/category_page_header_gradient"
-                android:layout_gravity="bottom"/>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="112dp"
-                android:background="@drawable/category_page_header_gradient"
                 android:rotation="180"/>
 
             <android.support.v7.widget.Toolbar
@@ -82,9 +79,9 @@
                 app:layout_scrollFlags="enterAlways|scroll"
                 app:layout_collapseMode="pin"
                 android:layout_marginTop="24dp"
+                android:layout_marginBottom="56dp"
                 app:contentInsetStart="0dp"
-                app:contentInsetEnd="0dp"
-                android:layout_marginBottom="56dp">
+                app:contentInsetEnd="0dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -104,7 +101,9 @@
                     <ImageButton
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:src="@drawable/ic_add"
+                        android:src="@drawable/ic_history"
+                        android:tint="#fff"
+                        android:onClick="onHistoryBtnClicked"
                         android:background="@android:color/transparent"/>
 
                     <ImageButton
@@ -112,23 +111,60 @@
                         android:layout_height="56dp"
                         android:src="@drawable/ic_notifications"
                         android:layout_alignParentRight="true"
+                        android:tint="#fff"
+                        android:onClick="onNotificationBtnClicked"
                         android:background="@android:color/transparent"/>
 
                 </RelativeLayout>
 
             </android.support.v7.widget.Toolbar>
 
+            <LinearLayout
+                android:id="@+id/activity_main_profile_open_mini_view"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="40dp"
+                android:alpha="0"
+                android:onClick="onProfileBtnClicked">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="56dp"
+                    android:layout_marginRight="12dp"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:text="کیهان محمدی"
+                    android:layout_gravity="center"/>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    app:cardCornerRadius="16dp"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/account_image"/>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
             <android.support.design.widget.TabLayout
                 android:id="@+id/activity_main_tab_layout"
-                android:layout_width="match_parent"
+                android:layout_width="128dp"
                 android:layout_height="56dp"
-                app:layout_collapseMode="pin"
-                android:layout_gravity="bottom"
-                app:tabTextColor="#eee"
-                app:tabSelectedTextColor="#fff"
+                android:layout_marginRight="40dp"
+                android:layout_gravity="bottom|right"
+                app:tabIndicatorHeight="2dp"
                 app:tabTextAppearance="@style/AppTheme.TabText"
-                app:tabIndicatorColor="#fff"
-                app:tabIndicatorHeight="2dp"/>
+                app:tabTextColor="#ddd"
+                app:tabSelectedTextColor="#fff"
+                app:tabIndicatorColor="#fff"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -139,5 +175,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_main_add_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        app:fabSize="normal"
+        app:layout_anchor="@id/activity_main_collapsing_toolbar"
+        app:layout_anchorGravity="bottom|left|start"
+        android:layout_marginLeft="32dp"
+        android:onClick="onCreateBtnClicked"/>
 
 </android.support.design.widget.CoordinatorLayout>

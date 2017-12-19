@@ -1,8 +1,8 @@
-package kasper.android.store_manager.fragments;
-
+package kasper.android.store_manager.fragments.lists;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,20 +12,21 @@ import kasper.android.store_manager.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ClientsFragment extends Fragment {
+public class OrdersListFragment extends Fragment {
 
+    RecyclerView recyclerView;
 
-    public ClientsFragment() {
-        // Required empty public constructor
+    public OrdersListFragment() {
+
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View contentView = inflater.inflate(R.layout.fragment_clients, container, false);
+        View contentView = inflater.inflate(R.layout.fragment_orders_list, container, false);
+
+        recyclerView = contentView.findViewById(R.id.fragment_orders_list_recycler_view);
 
         return contentView;
     }
-
 }
