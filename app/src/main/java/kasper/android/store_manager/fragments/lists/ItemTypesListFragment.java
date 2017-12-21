@@ -45,7 +45,7 @@ public class ItemsListFragment extends Fragment {
         List<Item> items;
 
         if (this.parentCategoryId >= 0) {
-            items = Core.getInstance().getDatabaseHelper().getItemsByParentId(this.parentCategoryId);
+            items = Core.getInstance().getDatabaseHelper().getItemTypesByParentId(this.parentCategoryId);
         }
         else {
             items = Core.getInstance().getDatabaseHelper().getItems();

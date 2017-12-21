@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#eee"
+    tools:context="kasper.android.store_manager.activities.ItemCreateActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentInsetStart="0dp"
+            app:contentInsetEnd="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@color/colorPrimary"
+                    android:text="مشتری جدید"
+                    android:gravity="center"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@android:color/transparent"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_back"
+                    android:tint="#fff"
+                    android:onClick="onCancelBtnClicked"/>
+
+                <ImageButton
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_done"
+                    android:tint="#fff"
+                    android:onClick="onOkBtnClicked"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="112dp"
+                android:layout_height="112dp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="56dp"
+                android:layout_marginTop="48dp"
+                android:onClick="onPhotoBtnClicked">
+
+                <ImageView
+                    android:id="@+id/activity_customer_create_photo_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_photo_camera"
+                    android:tint="#aaa"
+                    android:padding="28dp"/>
+
+            </android.support.v7.widget.CardView>
+
+            <EditText
+                android:id="@+id/activity_customer_create_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textColorHint="#999"
+                android:hint="نام مشتری"
+                android:backgroundTint="@color/colorPrimary"
+                tools:targetApi="lollipop"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/activity_customer_create_phone_number_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textColorHint="#999"
+                android:hint="تلفن"
+                android:backgroundTint="@color/colorPrimary"
+                tools:targetApi="lollipop"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:inputType="textPersonName"/>
+
+            <EditText
+                android:id="@+id/activity_customer_create_email_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textColorHint="#999"
+                android:hint="ایمیل"
+                android:backgroundTint="@color/colorPrimary"
+                tools:targetApi="lollipop"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:inputType="textPersonName"/>
+
+            <EditText
+                android:id="@+id/activity_customer_create_address_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textColorHint="#999"
+                android:hint="آدرس"
+                android:backgroundTint="@color/colorPrimary"
+                tools:targetApi="lollipop"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:inputType="textPersonName"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
