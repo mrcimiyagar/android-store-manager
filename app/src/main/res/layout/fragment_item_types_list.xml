@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="kasper.android.store_manager.fragments.lists.ItemsListFragment">
+    tools:context="kasper.android.store_manager.fragments.lists.ItemTypesListFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_items_list_recycler_view"

@@ -23,7 +23,11 @@ import java.util.Random;
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.activities.ListsBookActivity;
 import kasper.android.store_manager.adapters.ItemsTagsAdapter;
+import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.extras.HorizontalLinearDecoration;
+import kasper.android.store_manager.models.memory.Category;
+import kasper.android.store_manager.models.memory.Item;
+import kasper.android.store_manager.models.memory.ItemType;
 import kasper.android.store_manager.models.memory.Tag;
 
 /**
@@ -78,6 +82,7 @@ public class ItemsFragment extends Fragment {
         this.initLineChartView(recentlyRegedCV);
         this.initLineChartView(nearEndCV);
         this.initButtons();
+        this.initContent();
 
         return contentView;
     }
@@ -180,5 +185,135 @@ public class ItemsFragment extends Fragment {
                 startActivity(new Intent(getActivity(), ListsBookActivity.class).putExtra("list-index", 3));
             }
         });
+    }
+
+    private void initContent() {
+
+        List<Item> items = Core.getInstance().getDatabaseHelper().getItems();
+
+        int totalItemsValue = 0;
+
+        for (Item item : items) {
+            totalItemsValue += item.getPrice() * item.getCount();
+        }
+
+        totalValueTV.setText(totalItemsValue + "");
+
+        // ***
+
+        itemsTypesCountTV.setText(items.size() + " نوع کالا");
+
+        // ***
+
+        int itemsUnitCount = 0;
+
+        for (Item item : items) {
+            itemsUnitCount += item.getCount();
+        }
+
+        itemsUnitsCountTV.setText(itemsUnitCount + " واحد کالا");
+
+        // ***
+
+        List<Category> categories = Core.getInstance().getDatabaseHelper().getCategories();
+
+        categoriesCountTV.setText(categories.size() + " دسته کالا");
+
+        // ***
+
+        long currentMillis = System.currentTimeMillis();
+
+        int nearDeadlineCount = 0;
+
+        for (Item item : items) {
+            if (item.getDeadLineTime() != 0) {
+                long diff = item.getDeadLineTime() - currentMillis;
+                if (diff > 0 && diff < 86400000) {
+                    nearDeadlineCount++;
+                }
+            }
+        }
+
+        if (itemsUnitCount == 0) {
+            nearDeadLinePB.setProgress(0);
+            nearDeadLineTV.setText("0" + "%");
+        }
+        else {
+            int progress = (int)((float)nearDeadlineCount / (float)itemsUnitCount * 100);
+            nearDeadLinePB.setProgress(progress);
+            nearDeadLineTV.setText(progress + "%");
+        }
+
+        nearDeadLineCountTV.setText(nearDeadlineCount + " واحد کالا");
+
+        // ***
+
+        int passedDeadlineCount = 0;
+
+        for (Item item : items) {
+            long diff = currentMillis - item.getDeadLineTime();
+            if (diff <= 0) {
+                passedDeadlineCount += item.getCount();
+            }
+        }
+
+        if (itemsUnitCount == 0) {
+            passedDeadLinePB.setProgress(0);
+            passedDeadLineTV.setText("0" + "%");
+        }
+        else {
+            int progress = (int)((float)passedDeadlineCount / (float)itemsUnitCount * 100);
+            passedDeadLinePB.setProgress(progress);
+            passedDeadLineTV.setText(progress + "%");
+        }
+
+        passedDeadLineCountTV.setText(nearDeadlineCount + " واحد کالا");
+
+        // ***
+
+        int recentlyRegedCount = 0;
+
+        for (Item item : items) {
+            long diff = currentMillis - item.getRegisterTime();
+            if (diff < 86400000) {
+                recentlyRegedCount += item.getCount();
+            }
+        }
+
+        if (itemsUnitCount == 0) {
+            recentlyRegedPB.setProgress(0);
+            recentlyRegedTV.setText("0" + "%");
+        }
+        else {
+            int progress = (int)((float)recentlyRegedCount / (float)itemsUnitCount * 100);
+            recentlyRegedPB.setProgress(progress);
+            recentlyRegedTV.setText(progress + "%");
+        }
+
+        recentlyRegedCountTV.setText(nearDeadlineCount + " واحد کالا");
+
+        // ***
+
+        List<ItemType> itemTypes = Core.getInstance().getDatabaseHelper().getItemTypes();
+
+        int nearEndCount = 0;
+
+        for (ItemType itemType : itemTypes) {
+            if (itemType.getItemCount() < 10) {
+                nearEndCount++;
+            }
+        }
+
+        if (itemTypes.size() == 0) {
+            nearEndPB.setProgress(0);
+            nearEndTV.setText("0" + "%");
+        }
+        else {
+            int progress = (int)((float)nearEndCount / (float)itemTypes.size() * 100);
+            nearEndPB.setProgress(progress);
+            nearEndTV.setText(progress + "%");
+        }
+
+        nearEndCountTV.setText(nearDeadlineCount + " واحد کالا");
     }
 }

@@ -27,7 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:background="@color/colorPrimary"
-                    android:text="کالای جدید"
+                    android:text="مشتری جدید"
                     android:gravity="center"
                     android:textColor="#fff"
                     android:textSize="20sp"
@@ -77,7 +77,7 @@
                 android:onClick="onPhotoBtnClicked">
 
                 <ImageView
-                    android:id="@+id/activity_item_create_photo_image_view"
+                    android:id="@+id/activity_customer_create_photo_image_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/ic_photo_camera"
@@ -87,14 +87,14 @@
             </android.support.v7.widget.CardView>
 
             <EditText
-                android:id="@+id/activity_item_create_name_edit_text"
+                android:id="@+id/activity_customer_create_name_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:textColor="#000"
                 android:textSize="18sp"
                 android:textColorHint="#999"
-                android:hint="نام کالا"
+                android:hint="نام مشتری"
                 android:backgroundTint="@color/colorPrimary"
                 tools:targetApi="lollipop"
                 android:paddingRight="16dp"
@@ -102,14 +102,14 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/activity_item_create_price_edit_text"
+                android:id="@+id/activity_customer_create_phone_number_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:textColor="#000"
                 android:textSize="18sp"
                 android:textColorHint="#999"
-                android:hint="قیمت واحد"
+                android:hint="تلفن"
                 android:backgroundTint="@color/colorPrimary"
                 tools:targetApi="lollipop"
                 android:paddingRight="16dp"
@@ -117,89 +117,34 @@
                 android:inputType="textPersonName"/>
 
             <EditText
-                android:id="@+id/activity_item_create_count_edit_text"
+                android:id="@+id/activity_customer_create_email_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
                 android:textColor="#000"
                 android:textSize="18sp"
                 android:textColorHint="#999"
-                android:hint="تعداد واحد"
+                android:hint="ایمیل"
                 android:backgroundTint="@color/colorPrimary"
                 tools:targetApi="lollipop"
                 android:paddingRight="16dp"
                 android:paddingLeft="16dp"
                 android:inputType="textPersonName"/>
 
-            <RelativeLayout
+            <EditText
+                android:id="@+id/activity_customer_create_address_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rectangle_primary"
-                android:layout_marginTop="32dp"
-                android:onClick="onAttachBarcodeBtnClicked">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="پبوست بارکد"
-                    android:background="@android:color/transparent"
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:drawableRight="@drawable/ic_barcode"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="8dp"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rectangle_primary"
+                android:layout_height="48dp"
                 android:layout_marginTop="16dp"
-                android:onClick="onPickDeadlineTimeBtnClicked">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="انتخاب تاریخ انقضا"
-                    android:background="@android:color/transparent"
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:drawableRight="@drawable/ic_deadline"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="8dp"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rectangle_primary"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:onClick="onPickCategoryBtnClicked">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="انتخاب دسته"
-                    android:background="@android:color/transparent"
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    android:drawableRight="@drawable/ic_category"
-                    android:drawableTint="@color/colorPrimary"
-                    android:drawablePadding="8dp"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp"/>
-
-            </RelativeLayout>
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textColorHint="#999"
+                android:hint="آدرس"
+                android:backgroundTint="@color/colorPrimary"
+                tools:targetApi="lollipop"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:inputType="textPersonName"/>
 
         </LinearLayout>
 

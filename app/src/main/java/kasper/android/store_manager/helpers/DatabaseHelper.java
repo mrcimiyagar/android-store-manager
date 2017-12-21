@@ -7,6 +7,7 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmResults;
+import kasper.android.store_manager.models.memory.ItemType;
 import kasper.android.store_manager.models.memory.Tag;
 import kasper.android.store_manager.models.memory.Category;
 import kasper.android.store_manager.models.memory.Customer;
@@ -55,32 +56,51 @@ public class DatabaseHelper {
         realm.close();
     }
 
-    public void addItem(String name, int price, int count, Category category, String barcode, long deadlineTime) {
+    public void addItem(ItemType itemType, int count, String barcode, long deadlineTime) {
 
         long currentMillis = System.currentTimeMillis();
 
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
 
+        kasper.android.store_manager.models.database.ItemType dItemType =
+                realm.where(kasper.android.store_manager.models.database.ItemType.class)
+                .equalTo("id", itemType.getId()).findFirst();
+
         kasper.android.store_manager.models.database.Item dItem =
                 realm.createObject(kasper.android.store_manager.models.database.Item.class);
         dItem.setId(generateId(realm, kasper.android.store_manager.models.database.Item.class));
-        dItem.setTitle(name);
-        dItem.setPrice(price);
+        dItem.setItemType(dItemType);
         dItem.setCount(count);
         dItem.setDeadLineTime(deadlineTime);
         dItem.setLastModifiedTime(currentMillis);
         dItem.setRegisterTime(currentMillis);
 
+        realm.commitTransaction();
+        realm.close();
+    }
+
+    public void addItemType(String name, float price, Category category) {
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+
+        kasper.android.store_manager.models.database.ItemType dItemType =
+                realm.createObject(kasper.android.store_manager.models.database.ItemType.class);
+
+        dItemType.setId(generateId(realm, kasper.android.store_manager.models.database.ItemType.class));
+        dItemType.setTitle(name);
+        dItemType.setPrice(price);
+
         if (category != null) {
             kasper.android.store_manager.models.database.Category dParentCategory =
                     realm.where(kasper.android.store_manager.models.database.Category.class)
                             .equalTo("id", category.getId()).findFirst();
-            dItem.setCategory(dParentCategory);
-            dParentCategory.getItems().add(dItem);
+            dItemType.setCategory(dParentCategory);
+            dParentCategory.getItemTypes().add(dItemType);
         }
         else {
-            dItem.setCategory(null);
+            dItemType.setCategory(null);
         }
 
         realm.commitTransaction();
@@ -101,6 +121,9 @@ public class DatabaseHelper {
                 .equalTo("id", mCustomer.getId()).findFirst();
 
         dOrder.setCustomer(dCustomer);
+        dOrder.setActive(true);
+
+        dCustomer.getOrders().add(dOrder);
 
         realm.commitTransaction();
         realm.close();
@@ -184,6 +207,23 @@ public class DatabaseHelper {
         realm.close();
 
         return mItems;
+    }
+
+    public List<ItemType> getItemTypes() {
+
+        List<ItemType> mItemTypes;
+
+        Realm realm = Realm.getDefaultInstance();
+
+        RealmResults<kasper.android.store_manager.models.database.ItemType> dItemTypes =
+                realm.where(kasper.android.store_manager.models.database.ItemType.class)
+                .findAll();
+
+        mItemTypes = ItemType.getIntoMemory(dItemTypes);
+
+        realm.close();
+
+        return mItemTypes;
     }
 
     public List<Order> getOrders() {
@@ -286,17 +326,17 @@ public class DatabaseHelper {
         return mCategories;
     }
 
-    public List<Item> getItemsByParentId(int parentCategoryId) {
+    public List<ItemType> getItemTypesByParentId(int parentCategoryId) {
 
-        List<Item> mItems;
+        List<ItemType> mItems;
 
         Realm realm = Realm.getDefaultInstance();
 
-        RealmList<kasper.android.store_manager.models.database.Item> dItems =
+        RealmList<kasper.android.store_manager.models.database.ItemType> dItemTypes =
                 realm.where(kasper.android.store_manager.models.database.Category.class)
-                .equalTo("id", parentCategoryId).findFirst().getItems();
+                .equalTo("id", parentCategoryId).findFirst().getItemTypes();
 
-        mItems = Item.getIntoMemory(dItems);
+        mItems = ItemType.getIntoMemory(dItemTypes);
 
         return mItems;
     }

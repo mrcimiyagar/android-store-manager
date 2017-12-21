@@ -10,7 +10,7 @@ import android.view.View;
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.adapters.PagerAdapter;
 import kasper.android.store_manager.fragments.lists.CategoriesListFragment;
-import kasper.android.store_manager.fragments.lists.ItemsListFragment;
+import kasper.android.store_manager.fragments.lists.ItemTypesListFragment;
 import kasper.android.store_manager.models.memory.Category;
 
 public class CategoryDetailsActivity extends AppCompatActivity {
@@ -45,7 +45,7 @@ public class CategoryDetailsActivity extends AppCompatActivity {
         };
 
         this.pageFragments = new Fragment[] {
-                new ItemsListFragment().setParentCategoryId(category.getId()),
+                new ItemTypesListFragment().setParentCategoryId(category.getId()),
                 new CategoriesListFragment().setParentCategoryId(category.getId())
         };
 

@@ -21,11 +21,13 @@ public class Category implements Serializable {
         Category mCategory = new Category();
         mCategory.setId(dCategory.getId());
         mCategory.setName(dCategory.getName());
-        mCategory.setItemTypeCount(dCategory.getItems().size());
+        mCategory.setItemTypeCount(dCategory.getItemTypes().size());
 
         int itemUnitCount = 0;
-        for (kasper.android.store_manager.models.database.Item dItem : dCategory.getItems()) {
-            itemUnitCount += dItem.getCount();
+        for (kasper.android.store_manager.models.database.ItemType dItemType : dCategory.getItemTypes()) {
+            for (kasper.android.store_manager.models.database.Item dItem : dItemType.getItems()) {
+                itemUnitCount += dItem.getCount();
+            }
         }
         mCategory.setItemUnitCount(itemUnitCount);
 

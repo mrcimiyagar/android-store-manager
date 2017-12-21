@@ -95,7 +95,6 @@ public class ItemCreateActivity extends AppCompatActivity {
 
                         deadlineTime = tempC.getTimeInMillis();
 
-                        Log.d("KasperLogger", deadlineTime + "");
                     }
                 }, persianCalendar.getPersianYear(),
                 persianCalendar.getPersianMonth(),
@@ -118,7 +117,7 @@ public class ItemCreateActivity extends AppCompatActivity {
         int price = Integer.parseInt(this.priceET.getText().toString());
         int count = Integer.parseInt(this.countET.getText().toString());
 
-        Core.getInstance().getDatabaseHelper().addItem(name, price, count, parentCategory, "", deadlineTime);
+        //Core.getInstance().getDatabaseHelper().addItem(name, price, count, parentCategory, "", deadlineTime);
 
         this.finish();
     }

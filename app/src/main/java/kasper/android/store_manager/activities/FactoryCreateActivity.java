@@ -10,18 +10,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
-import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
-
 import java.io.File;
 
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.core.Core;
-import kasper.android.store_manager.models.memory.Category;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
-public class CustomerCreateActivity extends AppCompatActivity {
+public class FactoryCreateActivity extends AppCompatActivity {
 
     ImageView photoIV;
     EditText nameET;
@@ -32,7 +28,7 @@ public class CustomerCreateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_create);
+        setContentView(R.layout.activity_factory_create);
 
         this.initViews();
     }
@@ -45,20 +41,20 @@ public class CustomerCreateActivity extends AppCompatActivity {
             @Override
             public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
 
-                Toast.makeText(CustomerCreateActivity.this, "عکس اتخاب نشد", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FactoryCreateActivity.this, "عکس اتخاب نشد", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onImagePicked(File imageFile, EasyImage.ImageSource source, int type) {
 
-                Toast.makeText(CustomerCreateActivity.this, "عکس با موفقیت اتخاب شد", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FactoryCreateActivity.this, "عکس با موفقیت اتخاب شد", Toast.LENGTH_SHORT).show();
 
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inSampleSize = 3;
 
                 Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getPath());
 
-                CustomerCreateActivity.this.photoIV.setImageBitmap(bitmap);
+                FactoryCreateActivity.this.photoIV.setImageBitmap(bitmap);
             }
         });
     }
@@ -78,16 +74,16 @@ public class CustomerCreateActivity extends AppCompatActivity {
         String phone = this.phoneET.getText().toString();
         String address = this.addressET.getText().toString();
 
-        Core.getInstance().getDatabaseHelper().addCustomer(name, phone, email, address);
+        Core.getInstance().getDatabaseHelper().addFactory(name, phone, email, address);
 
         this.finish();
     }
 
     private void initViews() {
-        this.photoIV = this.findViewById(R.id.activity_customer_create_photo_image_view);
-        this.nameET = this.findViewById(R.id.activity_customer_create_name_edit_text);
-        this.emailET = this.findViewById(R.id.activity_customer_create_email_edit_text);
-        this.phoneET = this.findViewById(R.id.activity_customer_create_phone_number_edit_text);
-        this.addressET = this.findViewById(R.id.activity_customer_create_address_edit_text);
+        this.photoIV = this.findViewById(R.id.activity_factory_create_photo_image_view);
+        this.nameET = this.findViewById(R.id.activity_factory_create_name_edit_text);
+        this.emailET = this.findViewById(R.id.activity_factory_create_email_edit_text);
+        this.phoneET = this.findViewById(R.id.activity_factory_create_phone_number_edit_text);
+        this.addressET = this.findViewById(R.id.activity_factory_create_address_edit_text);
     }
 }

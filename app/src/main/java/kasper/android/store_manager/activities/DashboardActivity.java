@@ -34,10 +34,6 @@ public class DashboardActivity extends AppCompatActivity {
 
     AppBarLayout appBar;
     TextView appBarTitleTV;
-
-    ImageButton notificationsBTN;
-    ImageButton historyBTN;
-
     LinearLayout profileOpenMiniView;
 
     FloatingActionButton addFAB;
@@ -83,6 +79,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                startActivity(new Intent(DashboardActivity.this, OrderCreateActivity.class));
             }
         });
 
@@ -90,6 +87,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                startActivity(new Intent(DashboardActivity.this, FactoryCreateActivity.class));
             }
         });
 
@@ -97,6 +95,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                startActivity(new Intent(DashboardActivity.this, CustomerCreateActivity.class));
             }
         });
 

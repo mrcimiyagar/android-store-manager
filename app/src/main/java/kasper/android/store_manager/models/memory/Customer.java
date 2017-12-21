@@ -1,12 +1,14 @@
 package kasper.android.store_manager.models.memory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmResults;
+import kasper.android.store_manager.models.database.*;
 
-public class Customer {
+public class Customer implements Serializable {
 
     private int id;
     private String name;
@@ -14,6 +16,7 @@ public class Customer {
     private String phoneNumber;
     private String address;
     private int orderCount;
+    private int activeOrderCount;
 
     public static Customer getIntoMemory(kasper.android.store_manager.models.database.Customer dCustomer) {
         Customer mCustomer = new Customer();
@@ -23,6 +26,13 @@ public class Customer {
         mCustomer.setEmail(dCustomer.getEmail());
         mCustomer.setAddress(dCustomer.getAddress());
         mCustomer.setOrderCount(dCustomer.getOrders().size());
+        int activeOrders = 0;
+        for (kasper.android.store_manager.models.database.Order dOrder : dCustomer.getOrders()) {
+            if (dOrder.isActive()) {
+                activeOrders++;
+            }
+        }
+        mCustomer.setActiveOrderCount(activeOrders);
         return mCustomer;
     }
 
@@ -90,5 +100,13 @@ public class Customer {
 
     public void setOrderCount(int orderCount) {
         this.orderCount = orderCount;
+    }
+
+    public int getActiveOrderCount() {
+        return activeOrderCount;
+    }
+
+    public void setActiveOrderCount(int activeOrderCount) {
+        this.activeOrderCount = activeOrderCount;
     }
 }

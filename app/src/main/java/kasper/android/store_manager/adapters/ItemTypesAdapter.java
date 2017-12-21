@@ -10,17 +10,18 @@ import java.util.List;
 
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.models.memory.Item;
+import kasper.android.store_manager.models.memory.ItemType;
 
 /**
  * Created by keyhan1376 on 12/19/2017.
  */
 
-public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemVH> {
+public class ItemTypesAdapter extends RecyclerView.Adapter<ItemTypesAdapter.ItemVH> {
 
-    private List<Item> items;
+    private List<ItemType> itemTypes;
 
-    public ItemsAdapter(List<Item> items) {
-        this.items = items;
+    public ItemTypesAdapter(List<ItemType> itemTypes) {
+        this.itemTypes = itemTypes;
         this.notifyDataSetChanged();
     }
 
@@ -31,16 +32,16 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemVH> {
 
     @Override
     public void onBindViewHolder(ItemVH holder, int position) {
-        Item item = this.items.get(position);
+        ItemType itemType = this.itemTypes.get(position);
 
-        holder.nameTV.setText(item.getTitle());
-        holder.priceTV.setText(item.getPrice() + "");
-        holder.countTV.setText(item.getCount() + "");
+        holder.nameTV.setText(itemType.getTitle());
+        holder.priceTV.setText(itemType.getPrice() + "");
+        holder.countTV.setText(itemType.getItemCount() + "");
     }
 
     @Override
     public int getItemCount() {
-        return this.items.size();
+        return this.itemTypes.size();
     }
 
     class ItemVH extends RecyclerView.ViewHolder {

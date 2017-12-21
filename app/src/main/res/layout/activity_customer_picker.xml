@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kasper.android.store_manager.activities.CategoryPickerActivity">
+    tools:context="kasper.android.store_manager.activities.CustomerPickerActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="56dp"
-                    android:text="دسته ها"
+                    android:text="مشتری ها"
                     android:gravity="center_vertical"
                     android:textColor="#fff"
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
@@ -45,7 +45,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/activity_category_picker_recycler_view"
+        android:id="@+id/activity_customer_picker_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>

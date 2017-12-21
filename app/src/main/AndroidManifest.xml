@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,39 +21,66 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.DashboardActivity"
             android:theme="@style/AppTheme.TransparentStatus" />
+
         <activity
             android:name=".activities.NotificationsActivity"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".activities.CreateOptionsActivity"
             android:theme="@style/AppTheme.Dialog" />
+
         <activity
             android:name=".activities.ListsBookActivity"
             android:theme="@style/AppTheme.TransparentStatus" />
+
         <activity
             android:name=".activities.FactoriesActivity"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".activities.HistoryActivity"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".activities.BarcodeScannerActivity"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".activities.ItemCreateActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".activities.CategoryCreateActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize" />
+
         <activity android:name=".activities.CategoryPickerActivity"
             android:theme="@style/AppTheme"/>
+
         <activity android:name=".activities.CategoryDetailsActivity"
             android:theme="@style/AppTheme.TransparentStatus"/>
+
+        <activity android:name=".activities.OrderCreateActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name=".activities.CustomerPickerActivity"
+            android:theme="@style/AppTheme"/>
+
+        <activity android:name=".activities.CustomerCreateActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name=".activities.FactoryCreateActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+
     </application>
 
 </manifest>

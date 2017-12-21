@@ -5,10 +5,8 @@ import io.realm.RealmObject;
 public class Item extends RealmObject {
 
     private int id;
-    private String title;
-    private float price;
+    private ItemType itemType;
     private int count;
-    private Category category;
     private long registerTime;
     private long deadLineTime;
     private long lastModifiedTime;
@@ -21,20 +19,12 @@ public class Item extends RealmObject {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public ItemType getItemType() {
+        return itemType;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
+    public void setItemType(ItemType itemType) {
+        this.itemType = itemType;
     }
 
     public int getCount() {
@@ -43,14 +33,6 @@ public class Item extends RealmObject {
 
     public void setCount(int count) {
         this.count = count;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
     public long getRegisterTime() {

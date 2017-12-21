@@ -7,6 +7,7 @@ public class Order extends RealmObject {
     private int id;
     private String title;
     private Customer customer;
+    private boolean active;
 
     public int getId() {
         return id;
@@ -30,5 +31,13 @@ public class Order extends RealmObject {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

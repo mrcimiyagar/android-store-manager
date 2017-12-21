@@ -10,10 +10,10 @@ import kasper.android.store_manager.models.database.*;
 public class Item {
 
     private int id;
+    private int itemTypeId;
     private String title;
     private float price;
     private int count;
-    private int categoryId;
     private long registerTime;
     private long deadLineTime;
     private long lastModifiedTime;
@@ -21,10 +21,10 @@ public class Item {
     public static Item getIntoMemory(kasper.android.store_manager.models.database.Item dItem) {
         Item mItem = new Item();
         mItem.setId(dItem.getId());
-        mItem.setTitle(dItem.getTitle());
-        mItem.setPrice(dItem.getPrice());
+        mItem.setItemTypeId(dItem.getItemType().getId());
+        mItem.setTitle(dItem.getItemType().getTitle());
+        mItem.setPrice(dItem.getItemType().getPrice());
         mItem.setCount(dItem.getCount());
-        mItem.setCategoryId(dItem.getCategory().getId());
         mItem.setDeadLineTime(dItem.getDeadLineTime());
         mItem.setRegisterTime(dItem.getRegisterTime());
         mItem.setLastModifiedTime(dItem.getLastModifiedTime());
@@ -57,6 +57,14 @@ public class Item {
         this.id = id;
     }
 
+    public int getItemTypeId() {
+        return itemTypeId;
+    }
+
+    public void setItemTypeId(int itemTypeId) {
+        this.itemTypeId = itemTypeId;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -79,14 +87,6 @@ public class Item {
 
     public void setCount(int count) {
         this.count = count;
-    }
-
-    public int getCategoryId() {
-        return this.categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
     }
 
     public long getRegisterTime() {

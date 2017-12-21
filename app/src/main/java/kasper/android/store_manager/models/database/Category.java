@@ -8,7 +8,7 @@ public class Category extends RealmObject {
     private int id;
     private String name;
     private RealmList<Category> categories;
-    private RealmList<Item> items;
+    private RealmList<ItemType> itemTypes;
     private Category parentCategory;
     private boolean parent;
 
@@ -36,12 +36,12 @@ public class Category extends RealmObject {
         this.categories = categories;
     }
 
-    public RealmList<Item> getItems() {
-        return items;
+    public RealmList<ItemType> getItemTypes() {
+        return itemTypes;
     }
 
-    public void setItems(RealmList<Item> items) {
-        this.items = items;
+    public void setItemTypes(RealmList<ItemType> itemTypes) {
+        this.itemTypes = itemTypes;
     }
 
     public Category getParentCategory() {
