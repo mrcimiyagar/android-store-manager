@@ -1,6 +1,7 @@
 package kasper.android.store_manager.helpers;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.List;
 
@@ -75,6 +76,8 @@ public class DatabaseHelper {
         dItem.setDeadLineTime(deadlineTime);
         dItem.setLastModifiedTime(currentMillis);
         dItem.setRegisterTime(currentMillis);
+
+        dItemType.getItems().add(dItem);
 
         realm.commitTransaction();
         realm.close();

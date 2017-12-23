@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,8 +76,6 @@ public class ItemsFragment extends Fragment {
 
         this.initViews(contentView);
         this.initTags();
-        this.initMainCard();
-        this.initTimeCard();
         this.initLineChartView(nearDeadLineCV);
         this.initLineChartView(passedDeadLineCV);
         this.initLineChartView(recentlyRegedCV);
@@ -142,14 +141,6 @@ public class ItemsFragment extends Fragment {
         tagsRV.setAdapter(new ItemsTagsAdapter(tags));
     }
 
-    private void initMainCard() {
-
-    }
-
-    private void initTimeCard() {
-
-    }
-
     private void initLineChartView(LineChartView mChart) {
 
         String[] labels = new String[25];
@@ -189,6 +180,7 @@ public class ItemsFragment extends Fragment {
 
     private void initContent() {
 
+        List<ItemType> itemTypes = Core.getInstance().getDatabaseHelper().getItemTypes();
         List<Item> items = Core.getInstance().getDatabaseHelper().getItems();
 
         int totalItemsValue = 0;
@@ -197,11 +189,38 @@ public class ItemsFragment extends Fragment {
             totalItemsValue += item.getPrice() * item.getCount();
         }
 
-        totalValueTV.setText(totalItemsValue + "");
+        String totalValueStr = "";
+
+        StringBuilder tempTotalValueStrBuilder = new StringBuilder(totalItemsValue + "");
+
+        tempTotalValueStrBuilder = tempTotalValueStrBuilder.reverse();
+
+        for (int counter = 0; counter < tempTotalValueStrBuilder.length(); counter += 3) {
+            if (counter + 3 <= tempTotalValueStrBuilder.length()) {
+                StringBuilder tempStrBuilder = new StringBuilder(tempTotalValueStrBuilder.substring(counter, counter + 3));
+                tempStrBuilder = tempStrBuilder.append(',');
+                totalValueStr = totalValueStr.concat(tempStrBuilder.toString());
+            }
+            else {
+                StringBuilder tempStrBuilder = new StringBuilder(tempTotalValueStrBuilder.substring(counter));
+                tempStrBuilder = tempStrBuilder.append(',');
+                totalValueStr = totalValueStr.concat(tempStrBuilder.toString());
+            }
+        }
+
+        if (totalValueStr.length() > 0) {
+            if (totalValueStr.charAt(totalValueStr.length() - 1) == ',') {
+                totalValueStr = totalValueStr.substring(0, totalValueStr.length() - 1);
+            }
+        }
+
+        totalValueStr = new StringBuilder(totalValueStr).reverse().toString();
+
+        totalValueTV.setText(totalValueStr);
 
         // ***
 
-        itemsTypesCountTV.setText(items.size() + " نوع کالا");
+        itemsTypesCountTV.setText(itemTypes.size() + " نوع کالا");
 
         // ***
 
@@ -234,7 +253,7 @@ public class ItemsFragment extends Fragment {
             }
         }
 
-        if (itemsUnitCount == 0) {
+        if (itemsUnitCount == 0 || nearDeadlineCount == 0) {
             nearDeadLinePB.setProgress(0);
             nearDeadLineTV.setText("0" + "%");
         }
@@ -251,13 +270,13 @@ public class ItemsFragment extends Fragment {
         int passedDeadlineCount = 0;
 
         for (Item item : items) {
-            long diff = currentMillis - item.getDeadLineTime();
+            long diff = item.getDeadLineTime() - currentMillis;
             if (diff <= 0) {
                 passedDeadlineCount += item.getCount();
             }
         }
 
-        if (itemsUnitCount == 0) {
+        if (itemsUnitCount == 0 || passedDeadlineCount == 0) {
             passedDeadLinePB.setProgress(0);
             passedDeadLineTV.setText("0" + "%");
         }
@@ -267,7 +286,7 @@ public class ItemsFragment extends Fragment {
             passedDeadLineTV.setText(progress + "%");
         }
 
-        passedDeadLineCountTV.setText(nearDeadlineCount + " واحد کالا");
+        passedDeadLineCountTV.setText(passedDeadlineCount + " واحد کالا");
 
         // ***
 
@@ -280,7 +299,7 @@ public class ItemsFragment extends Fragment {
             }
         }
 
-        if (itemsUnitCount == 0) {
+        if (itemsUnitCount == 0 || recentlyRegedCount == 0) {
             recentlyRegedPB.setProgress(0);
             recentlyRegedTV.setText("0" + "%");
         }
@@ -290,11 +309,9 @@ public class ItemsFragment extends Fragment {
             recentlyRegedTV.setText(progress + "%");
         }
 
-        recentlyRegedCountTV.setText(nearDeadlineCount + " واحد کالا");
+        recentlyRegedCountTV.setText(recentlyRegedCount + " واحد کالا");
 
         // ***
-
-        List<ItemType> itemTypes = Core.getInstance().getDatabaseHelper().getItemTypes();
 
         int nearEndCount = 0;
 
@@ -304,7 +321,7 @@ public class ItemsFragment extends Fragment {
             }
         }
 
-        if (itemTypes.size() == 0) {
+        if (itemTypes.size() == 0 || nearEndCount == 0) {
             nearEndPB.setProgress(0);
             nearEndTV.setText("0" + "%");
         }
@@ -314,6 +331,6 @@ public class ItemsFragment extends Fragment {
             nearEndTV.setText(progress + "%");
         }
 
-        nearEndCountTV.setText(nearDeadlineCount + " واحد کالا");
+        nearEndCountTV.setText(nearEndCount + " واحد کالا");
     }
 }

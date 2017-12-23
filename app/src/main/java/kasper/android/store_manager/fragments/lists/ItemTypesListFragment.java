@@ -12,6 +12,7 @@ import java.util.List;
 
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.adapters.ItemTypesAdapter;
+import kasper.android.store_manager.callbacks.OnItemTypeSelectedListener;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.extras.LinearDecoration;
 import kasper.android.store_manager.models.memory.ItemType;
@@ -51,7 +52,12 @@ public class ItemTypesListFragment extends Fragment {
             items = Core.getInstance().getDatabaseHelper().getItemTypes();
         }
 
-        recyclerView.setAdapter(new ItemTypesAdapter(items));
+        recyclerView.setAdapter(new ItemTypesAdapter(items, new OnItemTypeSelectedListener() {
+            @Override
+            public void itemTypeSelected(ItemType itemType) {
+
+            }
+        }));
 
         return contentView;
     }

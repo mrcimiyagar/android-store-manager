@@ -81,6 +81,13 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize"/>
 
+        <activity android:name=".activities.ItemTypeCreateActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name=".activities.ItemTypePickerActivity"
+            android:theme="@style/AppTheme"/>
+
     </application>
 
 </manifest>

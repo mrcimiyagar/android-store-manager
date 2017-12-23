@@ -41,11 +41,15 @@
                 app:cardCornerRadius="56dp">
 
                 <ImageView
-                    android:id="@+id/activity_main_profile_open_max_view"
+                    android:id="@+id/activity_lists_book_logo_image_view"
                     android:layout_width="112dp"
                     android:layout_height="112dp"
                     android:orientation="vertical"
-                    android:src="@drawable/account_image"/>
+                    android:background="@drawable/circle_accent"
+                    android:src="@drawable/ic_item_type"
+                    android:scaleType="fitXY"
+                    android:padding="32dp"
+                    android:tint="#fff"/>
 
             </android.support.v7.widget.CardView>
 

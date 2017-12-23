@@ -59,6 +59,14 @@ public class DashboardActivity extends AppCompatActivity {
 
         View menuView = LayoutInflater.from(this).inflate(R.layout.activity_create_options, null, false);
 
+        menuView.findViewById(R.id.create_menu_item_type_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(DashboardActivity.this, ItemTypeCreateActivity.class));
+            }
+        });
+
         menuView.findViewById(R.id.create_menu_item_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -19,19 +19,18 @@ import java.io.File;
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.models.memory.Category;
+import kasper.android.store_manager.models.memory.ItemType;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class ItemCreateActivity extends AppCompatActivity {
 
     ImageView photoIV;
-    EditText nameET;
-    EditText priceET;
     EditText countET;
 
-    Category parentCategory;
-
     long deadlineTime;
+
+    ItemType itemType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,17 +69,13 @@ public class ItemCreateActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
 
-                parentCategory = (Category) data.getExtras().getSerializable("category");
+                itemType = (ItemType) data.getExtras().get("item-type");
             }
         }
     }
 
-    public void onPhotoBtnClicked(View view) {
-        EasyImage.openChooserWithDocuments(this, "", 0);
-    }
-
-    public void onPickCategoryBtnClicked(View view) {
-        startActivityForResult(new Intent(this, CategoryPickerActivity.class), 123);
+    public void onPickItemTypeBtnClicked(View view) {
+        startActivityForResult(new Intent(this, ItemTypePickerActivity.class), 123);
     }
 
     public void onPickDeadlineTimeBtnClicked(View view) {
@@ -113,19 +108,14 @@ public class ItemCreateActivity extends AppCompatActivity {
 
     public void onOkBtnClicked(View view) {
 
-        String name = this.nameET.getText().toString();
-        int price = Integer.parseInt(this.priceET.getText().toString());
         int count = Integer.parseInt(this.countET.getText().toString());
 
-        //Core.getInstance().getDatabaseHelper().addItem(name, price, count, parentCategory, "", deadlineTime);
+        Core.getInstance().getDatabaseHelper().addItem(itemType, count, "", deadlineTime);
 
         this.finish();
     }
 
     private void initViews() {
-        this.photoIV = this.findViewById(R.id.activity_item_create_photo_image_view);
-        this.nameET = this.findViewById(R.id.activity_item_create_name_edit_text);
-        this.priceET = this.findViewById(R.id.activity_item_create_price_edit_text);
         this.countET = this.findViewById(R.id.activity_item_create_count_edit_text);
     }
 }

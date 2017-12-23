@@ -29,6 +29,30 @@
         android:paddingRight="12dp">
 
         <LinearLayout
+            android:id="@+id/create_menu_item_type_view"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="نوع کالا"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@drawable/ic_item_type"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/create_menu_item_view"
             android:layout_width="match_parent"
             android:layout_height="56dp"

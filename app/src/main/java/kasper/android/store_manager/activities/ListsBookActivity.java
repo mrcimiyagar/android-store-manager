@@ -1,5 +1,6 @@
 package kasper.android.store_manager.activities;
 
+import android.graphics.Paint;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.ImageView;
 
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.adapters.PagerAdapter;
@@ -29,6 +31,8 @@ public class ListsBookActivity extends AppCompatActivity {
 
     Fragment[] pageFragments;
     String[] pageTitles;
+
+    ImageView logoIV;
 
     int pageIndex = 0;
 
@@ -53,6 +57,7 @@ public class ListsBookActivity extends AppCompatActivity {
         this.logoContainer = this.findViewById(R.id.activity_lists_book_logo_container);
         this.tabLayout = this.findViewById(R.id.activity_lists_book_tab_layout);
         this.viewPager = this.findViewById(R.id.activity_lists_book_view_pager);
+        this.logoIV = this.findViewById(R.id.activity_lists_book_logo_image_view);
     }
 
     private void initDecoration() {
@@ -73,6 +78,45 @@ public class ListsBookActivity extends AppCompatActivity {
                     logoContainer.animate().cancel();
                     logoContainer.animate().alpha(1).setDuration(200).start();
                 }
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                switch (position) {
+                    case 0: {
+                        logoIV.setImageResource(R.drawable.ic_customer);
+                        break;
+                    }
+                    case 1: {
+                        logoIV.setImageResource(R.drawable.ic_factory);
+                        break;
+                    }
+                    case 2: {
+                        logoIV.setImageResource(R.drawable.ic_order);
+                        break;
+                    }
+                    case 3: {
+                        logoIV.setImageResource(R.drawable.ic_category);
+                        break;
+                    }
+                    case 4: {
+                        logoIV.setImageResource(R.drawable.ic_item_type);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
     }

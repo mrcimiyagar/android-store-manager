@@ -1,18 +1,20 @@
 package kasper.android.store_manager.models.memory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
+import kasper.android.store_manager.models.database.*;
 import kasper.android.store_manager.models.database.Category;
 
 /**
  * Created by keyhan1376 on 12/21/2017.
  */
 
-public class ItemType {
+public class ItemType implements Serializable {
 
     private int id;
     private String title;
@@ -24,7 +26,14 @@ public class ItemType {
         ItemType mItemType = new ItemType();
         mItemType.setId(dItemType.getId());
         mItemType.setCategoryId(dItemType.getCategory().getId());
-        mItemType.setItemCount(dItemType.getItems().size());
+
+        int tempItemCount = 0;
+
+        for (kasper.android.store_manager.models.database.Item dItem : dItemType.getItems()) {
+            tempItemCount += dItem.getCount();
+        }
+
+        mItemType.setItemCount(tempItemCount);
         mItemType.setTitle(dItemType.getTitle());
         mItemType.setPrice(dItemType.getPrice());
         return mItemType;

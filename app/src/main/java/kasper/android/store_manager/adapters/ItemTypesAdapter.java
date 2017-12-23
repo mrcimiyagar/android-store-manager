@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import kasper.android.store_manager.R;
-import kasper.android.store_manager.models.memory.Item;
+import kasper.android.store_manager.callbacks.OnItemTypeSelectedListener;
 import kasper.android.store_manager.models.memory.ItemType;
 
 /**
@@ -19,24 +19,33 @@ import kasper.android.store_manager.models.memory.ItemType;
 public class ItemTypesAdapter extends RecyclerView.Adapter<ItemTypesAdapter.ItemVH> {
 
     private List<ItemType> itemTypes;
+    private OnItemTypeSelectedListener callback;
 
-    public ItemTypesAdapter(List<ItemType> itemTypes) {
+    public ItemTypesAdapter(List<ItemType> itemTypes, OnItemTypeSelectedListener callback) {
         this.itemTypes = itemTypes;
+        this.callback = callback;
         this.notifyDataSetChanged();
     }
 
     @Override
     public ItemVH onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ItemVH(LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_items, parent, false));
+        return new ItemVH(LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_item_types, parent, false));
     }
 
     @Override
     public void onBindViewHolder(ItemVH holder, int position) {
-        ItemType itemType = this.itemTypes.get(position);
+        final ItemType itemType = this.itemTypes.get(position);
 
         holder.nameTV.setText(itemType.getTitle());
         holder.priceTV.setText(itemType.getPrice() + "");
         holder.countTV.setText(itemType.getItemCount() + "");
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callback.itemTypeSelected(itemType);
+            }
+        });
     }
 
     @Override
@@ -52,9 +61,9 @@ public class ItemTypesAdapter extends RecyclerView.Adapter<ItemTypesAdapter.Item
 
         ItemVH(View itemView) {
             super(itemView);
-            this.nameTV = itemView.findViewById(R.id.adapter_items_name_text_view);
-            this.priceTV = itemView.findViewById(R.id.adapter_items_price_text_view);
-            this.countTV = itemView.findViewById(R.id.adapter_items_count_text_view);
+            this.nameTV = itemView.findViewById(R.id.adapter_item_types_name_text_view);
+            this.priceTV = itemView.findViewById(R.id.adapter_item_types_price_text_view);
+            this.countTV = itemView.findViewById(R.id.adapter_item_types_count_text_view);
         }
     }
 }
