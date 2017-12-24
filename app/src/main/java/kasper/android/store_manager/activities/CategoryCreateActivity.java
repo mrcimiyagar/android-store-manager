@@ -19,6 +19,7 @@ import io.realm.Realm;
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.models.memory.Category;
+import kasper.android.store_manager.models.memory.Event;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -86,8 +87,18 @@ public class CategoryCreateActivity extends AppCompatActivity {
     }
 
     public void onOkBtnClicked(View view) {
+
         String name = this.nameET.getText().toString();
-        Core.getInstance().getDatabaseHelper().addCategory(name, parentCategory);
+
+        if (name.length() == 0) {
+            Toast.makeText(this, "نام باید وارد شد", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int id = Core.getInstance().getDatabaseHelper().addCategory(name, parentCategory);
+
+        Core.getInstance().getDatabaseHelper().addEvent("دسته ی جدید به سیستم اضافه شد .", Event.EventAttachmentTypes.CATEGORY, id);
+
         this.finish();
     }
 

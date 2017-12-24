@@ -19,6 +19,7 @@ import java.io.File;
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.models.memory.Category;
+import kasper.android.store_manager.models.memory.Event;
 import kasper.android.store_manager.models.memory.ItemType;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -110,7 +111,9 @@ public class ItemCreateActivity extends AppCompatActivity {
 
         int count = Integer.parseInt(this.countET.getText().toString());
 
-        Core.getInstance().getDatabaseHelper().addItem(itemType, count, "", deadlineTime);
+        int id = Core.getInstance().getDatabaseHelper().addItem(itemType, count, "", deadlineTime);
+
+        Core.getInstance().getDatabaseHelper().addEvent("کالای جدید به سیستم اضافه شد .", Event.EventAttachmentTypes.ITEM, id);
 
         this.finish();
     }

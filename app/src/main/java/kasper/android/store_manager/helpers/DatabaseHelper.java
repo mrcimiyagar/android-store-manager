@@ -1,13 +1,16 @@
 package kasper.android.store_manager.helpers;
 
 import android.content.Context;
-import android.util.Log;
+import android.graphics.Paint;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmResults;
+import io.realm.Sort;
+import kasper.android.store_manager.models.memory.Event;
 import kasper.android.store_manager.models.memory.ItemType;
 import kasper.android.store_manager.models.memory.Tag;
 import kasper.android.store_manager.models.memory.Category;
@@ -31,13 +34,16 @@ public class DatabaseHelper {
         realm.close();
     }
 
-    public void addCategory(String name, Category parentCategory) {
+    public int addCategory(String name, Category parentCategory) {
+
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
 
+        int id = generateId(realm, kasper.android.store_manager.models.database.Category.class);
+
         kasper.android.store_manager.models.database.Category dCategory =
                 realm.createObject(kasper.android.store_manager.models.database.Category.class);
-        dCategory.setId(generateId(realm, kasper.android.store_manager.models.database.Category.class));
+        dCategory.setId(id);
         dCategory.setName(name);
 
         if (parentCategory != null) {
@@ -55,14 +61,18 @@ public class DatabaseHelper {
 
         realm.commitTransaction();
         realm.close();
+
+        return id;
     }
 
-    public void addItem(ItemType itemType, int count, String barcode, long deadlineTime) {
+    public int addItem(ItemType itemType, int count, String barcode, long deadlineTime) {
 
         long currentMillis = System.currentTimeMillis();
 
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
+
+        int id = generateId(realm, kasper.android.store_manager.models.database.Item.class);
 
         kasper.android.store_manager.models.database.ItemType dItemType =
                 realm.where(kasper.android.store_manager.models.database.ItemType.class)
@@ -70,7 +80,7 @@ public class DatabaseHelper {
 
         kasper.android.store_manager.models.database.Item dItem =
                 realm.createObject(kasper.android.store_manager.models.database.Item.class);
-        dItem.setId(generateId(realm, kasper.android.store_manager.models.database.Item.class));
+        dItem.setId(id);
         dItem.setItemType(dItemType);
         dItem.setCount(count);
         dItem.setDeadLineTime(deadlineTime);
@@ -81,17 +91,21 @@ public class DatabaseHelper {
 
         realm.commitTransaction();
         realm.close();
+
+        return id;
     }
 
-    public void addItemType(String name, float price, Category category) {
+    public int addItemType(String name, float price, Category category) {
 
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
 
+        int id = generateId(realm, kasper.android.store_manager.models.database.ItemType.class);
+
         kasper.android.store_manager.models.database.ItemType dItemType =
                 realm.createObject(kasper.android.store_manager.models.database.ItemType.class);
 
-        dItemType.setId(generateId(realm, kasper.android.store_manager.models.database.ItemType.class));
+        dItemType.setId(id);
         dItemType.setTitle(name);
         dItemType.setPrice(price);
 
@@ -108,15 +122,20 @@ public class DatabaseHelper {
 
         realm.commitTransaction();
         realm.close();
+
+        return id;
     }
 
-    public void addOrder(String name, Customer mCustomer) {
+    public int addOrder(String name, Customer mCustomer) {
+
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
 
+        int id = generateId(realm, kasper.android.store_manager.models.database.Order.class);
+
         kasper.android.store_manager.models.database.Order dOrder =
                 realm.createObject(kasper.android.store_manager.models.database.Order.class);
-        dOrder.setId(generateId(realm, kasper.android.store_manager.models.database.Order.class));
+        dOrder.setId(id);
         dOrder.setTitle(name);
 
         kasper.android.store_manager.models.database.Customer dCustomer =
@@ -130,16 +149,21 @@ public class DatabaseHelper {
 
         realm.commitTransaction();
         realm.close();
+
+        return id;
     }
 
-    public void addFactory(String name, String phoneNumber, String email, String address) {
+    public int addFactory(String name, String phoneNumber, String email, String address) {
+
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
+
+        int id = generateId(realm, kasper.android.store_manager.models.database.Factory.class);
 
         kasper.android.store_manager.models.database.Factory dFactory =
                 realm.createObject(kasper.android.store_manager.models.database.Factory.class);
 
-        dFactory.setId(generateId(realm, kasper.android.store_manager.models.database.Factory.class));
+        dFactory.setId(id);
         dFactory.setName(name);
         dFactory.setPhoneNumber(phoneNumber);
         dFactory.setEmail(email);
@@ -147,16 +171,21 @@ public class DatabaseHelper {
 
         realm.commitTransaction();
         realm.close();
+
+        return id;
     }
 
-    public void addCustomer(String name, String phoneNumber, String email, String address) {
+    public int addCustomer(String name, String phoneNumber, String email, String address) {
+
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
+
+        int id = generateId(realm, kasper.android.store_manager.models.database.Customer.class);
 
         kasper.android.store_manager.models.database.Customer dCustomer =
                 realm.createObject(kasper.android.store_manager.models.database.Customer.class);
 
-        dCustomer.setId(generateId(realm, kasper.android.store_manager.models.database.Customer.class));
+        dCustomer.setId(id);
         dCustomer.setName(name);
         dCustomer.setPhoneNumber(phoneNumber);
         dCustomer.setEmail(email);
@@ -164,20 +193,109 @@ public class DatabaseHelper {
 
         realm.commitTransaction();
         realm.close();
+
+        return id;
     }
 
-    public void addTag(String name) {
+    public int addTag(String name) {
+
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
 
+        int id = generateId(realm, kasper.android.store_manager.models.database.Tag.class);
+
         kasper.android.store_manager.models.database.Tag dTag =
                 realm.createObject(kasper.android.store_manager.models.database.Tag.class);
+        dTag.setId(id);
         dTag.setName(name);
+
+        realm.commitTransaction();
+        realm.close();
+
+        return id;
+    }
+
+    public int addEvent(String message, Event.EventAttachmentTypes attType, List<Integer> attIds) {
+
+        long time = System.currentTimeMillis();
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+
+        int id = generateId(realm, kasper.android.store_manager.models.database.Event.class);
+
+        kasper.android.store_manager.models.database.Event dEvent =
+                realm.createObject(kasper.android.store_manager.models.database.Event.class);
+        dEvent.setId(id);
+        dEvent.setMessage(message);
+        dEvent.setTime(time);
+        dEvent.setAttachmentType(mapEventAttachmentTypesToNums(attType));
+        dEvent.setAttachmentIds(convertIdListToString(attIds));
+
+        realm.commitTransaction();
+        realm.close();
+
+        return id;
+    }
+
+    public int addEvent(String message, Event.EventAttachmentTypes attType, Integer attId) {
+
+        List<Integer> ids = new ArrayList<>();
+        ids.add(attId);
+
+        return addEvent(message, attType, ids);
+    }
+
+    public void addEvent(String message) {
+        long time = System.currentTimeMillis();
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+
+        kasper.android.store_manager.models.database.Event dEvent =
+                realm.createObject(kasper.android.store_manager.models.database.Event.class);
+        dEvent.setId(generateId(realm, Event.class));
+        dEvent.setMessage(message);
+        dEvent.setTime(time);
+        dEvent.setAttachmentType((short) 0);
+        dEvent.setAttachmentIds("");
 
         realm.commitTransaction();
         realm.close();
     }
 
+
+    // ***
+
+    private short mapEventAttachmentTypesToNums(Event.EventAttachmentTypes eventAttachmentType) {
+        switch (eventAttachmentType) {
+            case ITEM_TYPE:
+                return 1;
+            case ITEM:
+                return 2;
+            case CATEGORY:
+                return 3;
+            case ORDER:
+                return 4;
+            case FACTORY:
+                return 5;
+            case CUSTOMER:
+                return 6;
+            default:
+                return 0;
+        }
+    }
+
+    private String convertIdListToString(List<Integer> ids) {
+        StringBuilder attIdsStr = new StringBuilder("");
+        for (int attId : ids) {
+            attIdsStr = attIdsStr.append(attId).append(",");
+        }
+        if (attIdsStr.charAt(attIdsStr.length() - 1) == ',') {
+            attIdsStr.deleteCharAt(attIdsStr.length() - 1);
+        }
+        return attIdsStr.toString();
+    }
     // ***
 
     public List<Category> getCategories() {
@@ -293,6 +411,23 @@ public class DatabaseHelper {
         return mTags;
     }
 
+    public List<Event> getEvents() {
+
+        List<kasper.android.store_manager.models.memory.Event> mEvents;
+
+        Realm realm = Realm.getDefaultInstance();
+
+        RealmResults<kasper.android.store_manager.models.database.Event> dEvents =
+                realm.where(kasper.android.store_manager.models.database.Event.class)
+                        .findAllSorted("time", Sort.DESCENDING);
+
+        mEvents = Event.getIntoMemory(dEvents);
+
+        realm.close();
+
+        return mEvents;
+    }
+
     // ***
 
     public List<Category> getCategoriesByParentId(int parentCategoryId) {
@@ -357,6 +492,21 @@ public class DatabaseHelper {
         mItems = Item.getIntoMemory(dItems);
 
         return mItems;
+    }
+
+    public Category getCategoryById(int categoryId) {
+
+        Realm realm = Realm.getDefaultInstance();
+
+        kasper.android.store_manager.models.database.Category dCategory =
+                realm.where(kasper.android.store_manager.models.database.Category.class)
+                        .equalTo("id", categoryId).findFirst();
+
+        Category category = Category.getIntoMemory(dCategory);
+
+        realm.close();
+
+        return category;
     }
 
     // ***

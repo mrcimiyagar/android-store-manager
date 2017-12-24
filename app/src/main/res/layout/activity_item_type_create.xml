@@ -114,7 +114,7 @@
                 tools:targetApi="lollipop"
                 android:paddingRight="16dp"
                 android:paddingLeft="16dp"
-                android:inputType="textPersonName"/>
+                android:inputType="number"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"

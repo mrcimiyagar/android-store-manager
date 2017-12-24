@@ -8,6 +8,7 @@
     tools:context="kasper.android.store_manager.activities.CategoryDetailsActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/activity_category_details_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="304dp">
 
@@ -30,6 +31,16 @@
                 android:layout_height="match_parent"
                 android:background="#a000"/>
 
+            <TextView
+                android:id="@+id/activity_category_details_max_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="کفش"
+                android:textSize="35sp"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="112dp"
@@ -51,7 +62,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/activity_main_app_bar_title_text_view"
+                        android:id="@+id/activity_category_details_app_bar_title_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"

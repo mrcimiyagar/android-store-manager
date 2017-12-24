@@ -18,6 +18,7 @@ import java.io.File;
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.models.memory.Category;
+import kasper.android.store_manager.models.memory.Event;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -86,9 +87,29 @@ public class ItemTypeCreateActivity extends AppCompatActivity {
     public void onOkBtnClicked(View view) {
 
         String name = this.nameET.getText().toString();
-        int price = Integer.parseInt(this.priceET.getText().toString());
 
-        Core.getInstance().getDatabaseHelper().addItemType(name, price, parentCategory);
+        if (name.length() == 0) {
+            Toast.makeText(this, "نام باید وارد شد", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int price = 0;
+
+        try {
+            price = Integer.parseInt(this.priceET.getText().toString());
+        }
+        catch (NumberFormatException ignored) {
+
+        }
+
+        if (price == 0) {
+            Toast.makeText(this, "قیمت نامعتبر", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int id = Core.getInstance().getDatabaseHelper().addItemType(name, price, parentCategory);
+
+        Core.getInstance().getDatabaseHelper().addEvent("نوع کالای جدید به سیستم اضافه شد .", Event.EventAttachmentTypes.ITEM_TYPE, id);
 
         this.finish();
     }

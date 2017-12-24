@@ -16,6 +16,7 @@ import kasper.android.store_manager.R;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.models.memory.Category;
 import kasper.android.store_manager.models.memory.Customer;
+import kasper.android.store_manager.models.memory.Event;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
@@ -84,7 +85,19 @@ public class OrderCreateActivity extends AppCompatActivity {
 
         String name = this.nameET.getText().toString();
 
-        Core.getInstance().getDatabaseHelper().addOrder(name, customer);
+        if (name.length() == 0) {
+            Toast.makeText(this, "نام باید وارد شد", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (customer == null) {
+            Toast.makeText(this, "مشتری باید انتخاب شود", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int id = Core.getInstance().getDatabaseHelper().addOrder(name, customer);
+
+        Core.getInstance().getDatabaseHelper().addEvent("سفارش جدید به سیستم اضافه شد .", Event.EventAttachmentTypes.ORDER, id);
 
         this.finish();
     }

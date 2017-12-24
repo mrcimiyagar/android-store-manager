@@ -8,6 +8,8 @@ import android.view.View;
 
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.adapters.TimeLineAdapter;
+import kasper.android.store_manager.core.Core;
+import kasper.android.store_manager.extras.LinearDecoration;
 
 public class HistoryActivity extends AppCompatActivity {
 
@@ -20,7 +22,9 @@ public class HistoryActivity extends AppCompatActivity {
 
         this.recyclerView = this.findViewById(R.id.activity_history_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new TimeLineAdapter());
+        int padding = (int)(16 * getResources().getDisplayMetrics().density);
+        recyclerView.addItemDecoration(new LinearDecoration(padding, padding));
+        recyclerView.setAdapter(new TimeLineAdapter(Core.getInstance().getDatabaseHelper().getEvents()));
     }
 
     public void onBackBtnClicked(View view) {
