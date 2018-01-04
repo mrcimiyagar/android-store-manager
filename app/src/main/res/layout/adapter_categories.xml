@@ -7,20 +7,24 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="12dp"
-        app:cardCornerRadius="14dp"
-        app:cardElevation="8dp">
+        android:layout_height="144dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp">
+
+        <ImageView
+            android:layout_width="144dp"
+            android:layout_height="144dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/shoes_wallpaper"
+            android:layout_gravity="right"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:orientation="vertical"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="center_vertical"
             android:layout_marginRight="160dp">
 
             <TextView
@@ -41,7 +45,7 @@
                 android:layout_gravity="right"
                 android:textSize="18sp"
                 android:textColor="#000"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="4dp"/>
 
             <TextView
                 android:id="@+id/adapter_categories_item_type_count"
@@ -51,7 +55,7 @@
                 android:layout_gravity="right"
                 android:textSize="18sp"
                 android:textColor="#000"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="4dp"/>
 
             <TextView
                 android:id="@+id/adapter_categories_item_unit_count"
@@ -61,28 +65,16 @@
                 android:layout_gravity="right"
                 android:textSize="18sp"
                 android:textColor="#000"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginTop="4dp"/>
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="144dp"
-        android:layout_height="144dp"
-        app:cardCornerRadius="14dp"
-        app:cardElevation="12dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="16dp">
-
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/shoes_wallpaper"
-            android:layout_gravity="right"/>
+        <ImageButton
+            android:id="@+id/adapter_categories_delete_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_delete"
+            android:background="@android:color/transparent"/>
 
     </android.support.v7.widget.CardView>
 

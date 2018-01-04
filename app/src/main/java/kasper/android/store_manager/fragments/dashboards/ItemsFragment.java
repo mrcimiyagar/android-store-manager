@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +18,17 @@ import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import kasper.android.store_manager.R;
+import kasper.android.store_manager.activities.ItemTypesListActivity;
+import kasper.android.store_manager.activities.ItemsListActivity;
 import kasper.android.store_manager.activities.ListsBookActivity;
 import kasper.android.store_manager.adapters.ItemsTagsAdapter;
+import kasper.android.store_manager.behaviours.UpdatablePage;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.extras.HorizontalLinearDecoration;
 import kasper.android.store_manager.models.memory.Category;
+import kasper.android.store_manager.models.memory.DayReport;
 import kasper.android.store_manager.models.memory.Item;
 import kasper.android.store_manager.models.memory.ItemType;
 import kasper.android.store_manager.models.memory.Tag;
@@ -34,7 +36,7 @@ import kasper.android.store_manager.models.memory.Tag;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ItemsFragment extends Fragment {
+public class ItemsFragment extends Fragment implements UpdatablePage {
 
     CardView noTagsCV;
     RecyclerView tagsRV;
@@ -76,10 +78,6 @@ public class ItemsFragment extends Fragment {
 
         this.initViews(contentView);
         this.initTags();
-        this.initLineChartView(nearDeadLineCV);
-        this.initLineChartView(passedDeadLineCV);
-        this.initLineChartView(recentlyRegedCV);
-        this.initLineChartView(nearEndCV);
         this.initButtons();
         this.initContent();
 
@@ -126,8 +124,8 @@ public class ItemsFragment extends Fragment {
 
         tagsRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-        tagsRV.addItemDecoration(new HorizontalLinearDecoration((int)(16 * getResources()
-                .getDisplayMetrics().density),(int)(16 * getResources().getDisplayMetrics()
+        tagsRV.addItemDecoration(new HorizontalLinearDecoration((int) (16 * getResources()
+                .getDisplayMetrics().density), (int) (16 * getResources().getDisplayMetrics()
                 .density)));
 
         List<Tag> tags = new ArrayList<>();
@@ -139,24 +137,6 @@ public class ItemsFragment extends Fragment {
         }
 
         tagsRV.setAdapter(new ItemsTagsAdapter(tags));
-    }
-
-    private void initLineChartView(LineChartView mChart) {
-
-        String[] labels = new String[25];
-        float[] values = new float[25];
-
-        for (int counter = 0; counter < labels.length; counter++) {
-            labels[counter] = counter % 5 == 0 ? counter + "" : "";
-            values[counter] = (counter * 10 + 10) + new Random().nextInt(100) - 50;
-        }
-
-        LineSet dataSet = new LineSet(labels, values);
-        dataSet.setColor(getResources().getColor(R.color.colorAccent))
-                .setFill(getResources().getColor(R.color.colorPrimary));
-        mChart.addData(dataSet);
-
-        mChart.show(new Animation());
     }
 
     private void initButtons() {
@@ -240,17 +220,15 @@ public class ItemsFragment extends Fragment {
 
         // ***
 
-        long currentMillis = System.currentTimeMillis();
+        final ArrayList<Item> nearDeadlineItems = new ArrayList<>(Core.getInstance().getDatabaseHelper().getItemsNearDeadline());
+        final ArrayList<Item> passedDeadlineItems = new ArrayList<>(Core.getInstance().getDatabaseHelper().getItemsPassedDeadline());
+        final ArrayList<Item> recentlyRegedItems = new ArrayList<>(Core.getInstance().getDatabaseHelper().getItemsRecentlyReged());
+        final ArrayList<ItemType> nearEndItemTypes = new ArrayList<>(Core.getInstance().getDatabaseHelper().getItemTypesNearEnd());
 
         int nearDeadlineCount = 0;
 
-        for (Item item : items) {
-            if (item.getDeadLineTime() != 0) {
-                long diff = item.getDeadLineTime() - currentMillis;
-                if (diff > 0 && diff < 86400000) {
-                    nearDeadlineCount++;
-                }
-            }
+        for (Item item : nearDeadlineItems) {
+            nearDeadlineCount += item.getCount();
         }
 
         if (itemsUnitCount == 0 || nearDeadlineCount == 0) {
@@ -265,15 +243,23 @@ public class ItemsFragment extends Fragment {
 
         nearDeadLineCountTV.setText(nearDeadlineCount + " واحد کالا");
 
+        nearDeadLinePB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), ItemsListActivity.class);
+                intent.putExtra("title", "نزدیک انقضا");
+                intent.putExtra("items", nearDeadlineItems);
+                startActivity(intent);
+            }
+        });
+
         // ***
 
         int passedDeadlineCount = 0;
 
-        for (Item item : items) {
-            long diff = item.getDeadLineTime() - currentMillis;
-            if (diff <= 0) {
-                passedDeadlineCount += item.getCount();
-            }
+        for (Item item : passedDeadlineItems) {
+            passedDeadlineCount += item.getCount();
         }
 
         if (itemsUnitCount == 0 || passedDeadlineCount == 0) {
@@ -288,15 +274,22 @@ public class ItemsFragment extends Fragment {
 
         passedDeadLineCountTV.setText(passedDeadlineCount + " واحد کالا");
 
+        passedDeadLinePB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ItemsListActivity.class);
+                intent.putExtra("title", "گدشته از انقضا");
+                intent.putExtra("items", passedDeadlineItems);
+                startActivity(intent);
+            }
+        });
+
         // ***
 
         int recentlyRegedCount = 0;
 
-        for (Item item : items) {
-            long diff = currentMillis - item.getRegisterTime();
-            if (diff < 86400000) {
-                recentlyRegedCount += item.getCount();
-            }
+        for (Item item : recentlyRegedItems) {
+            recentlyRegedCount += item.getCount();
         }
 
         if (itemsUnitCount == 0 || recentlyRegedCount == 0) {
@@ -311,15 +304,19 @@ public class ItemsFragment extends Fragment {
 
         recentlyRegedCountTV.setText(recentlyRegedCount + " واحد کالا");
 
+        recentlyRegedPB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ItemsListActivity.class);
+                intent.putExtra("title", "تازه وارد شده");
+                intent.putExtra("items", recentlyRegedItems);
+                startActivity(intent);
+            }
+        });
+
         // ***
 
-        int nearEndCount = 0;
-
-        for (ItemType itemType : itemTypes) {
-            if (itemType.getItemCount() < 10) {
-                nearEndCount++;
-            }
-        }
+        int nearEndCount = nearEndItemTypes.size();
 
         if (itemTypes.size() == 0 || nearEndCount == 0) {
             nearEndPB.setProgress(0);
@@ -332,5 +329,66 @@ public class ItemsFragment extends Fragment {
         }
 
         nearEndCountTV.setText(nearEndCount + " واحد کالا");
+
+        nearEndPB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), ItemTypesListActivity.class);
+                intent.putExtra("title", "موجودی کم");
+                intent.putExtra("itemTypes", nearEndItemTypes);
+                startActivity(intent);
+            }
+        });
+
+        // ***
+
+        List<DayReport> dayReports = Core.getInstance().getDatabaseHelper().getDayReports();
+
+        float[] nearDeadlineArr = new float[dayReports.size()];
+        float[] passedDeadlineArr = new float[dayReports.size()];
+        float[] recentlyRegedArr = new float[dayReports.size()];
+        float[] nearEndArr = new float[dayReports.size()];
+        long[] times = new long[dayReports.size()];
+
+        int counter = 0;
+
+        for (DayReport dayReport : dayReports) {
+            nearDeadlineArr[counter] = dayReport.getNearDeadline();
+            passedDeadlineArr[counter] = dayReport.getPassedDeadline();
+            recentlyRegedArr[counter] = dayReport.getRecentlyReged();
+            nearEndArr[counter] = dayReport.getNearEnd();
+            times[counter] = dayReport.getTime();
+            counter++;
+        }
+
+        initLineChartView(nearDeadLineCV, nearDeadlineArr);
+        initLineChartView(passedDeadLineCV, passedDeadlineArr);
+        initLineChartView(recentlyRegedCV, recentlyRegedArr);
+        initLineChartView(nearEndCV, nearEndArr);
+    }
+
+    private void initLineChartView(LineChartView mChart, float[] values) {
+
+        if (values.length > 0) {
+
+            String[] labels = new String[values.length];
+
+            for (int counter = 0; counter < labels.length; counter++) {
+                labels[counter] = "";
+            }
+
+            LineSet dataSet = new LineSet(labels, values);
+            dataSet.setColor(getResources().getColor(R.color.colorAccent))
+                    .setFill(getResources().getColor(R.color.colorPrimary));
+            mChart.addData(dataSet);
+
+            mChart.show(new Animation());
+        }
+    }
+
+    @Override
+    public void update() {
+
     }
 }

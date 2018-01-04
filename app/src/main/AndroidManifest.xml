@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="kasper.android.store_manager">
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -11,83 +12,100 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-
-        <activity android:name=".activities.SplashScreenActivity">
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        tools:replace="android:supportsRtl">
+        <activity
+            android:name=".activities.SplashScreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.DashboardActivity"
-            android:theme="@style/AppTheme.TransparentStatus" />
-
+            android:theme="@style/AppTheme.TransparentStatus"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.NotificationsActivity"
-            android:theme="@style/AppTheme" />
-
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CreateOptionsActivity"
-            android:theme="@style/AppTheme.Dialog" />
-
+            android:theme="@style/AppTheme.Dialog"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.ListsBookActivity"
-            android:theme="@style/AppTheme.TransparentStatus" />
-
+            android:theme="@style/AppTheme.TransparentStatus"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.FactoriesActivity"
-            android:theme="@style/AppTheme" />
-
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.HistoryActivity"
-            android:theme="@style/AppTheme" />
-
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.BarcodeScannerActivity"
-            android:theme="@style/AppTheme" />
-
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.ItemCreateActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize" />
-
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CategoryCreateActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity android:name=".activities.CategoryPickerActivity"
-            android:theme="@style/AppTheme"/>
-
-        <activity android:name=".activities.CategoryDetailsActivity"
-            android:theme="@style/AppTheme.TransparentStatus"/>
-
-        <activity android:name=".activities.OrderCreateActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.CategoryPickerActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize"/>
-
-        <activity android:name=".activities.CustomerPickerActivity"
-            android:theme="@style/AppTheme"/>
-
-        <activity android:name=".activities.CustomerCreateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CategoryDetailsActivity"
+            android:theme="@style/AppTheme.TransparentStatus"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.OrderCreateActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize"/>
-
-        <activity android:name=".activities.FactoryCreateActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.CustomerPickerActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize"/>
-
-        <activity android:name=".activities.ItemTypeCreateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CustomerCreateActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize"/>
-
-        <activity android:name=".activities.ItemTypePickerActivity"
-            android:theme="@style/AppTheme"/>
-
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.FactoryCreateActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.ItemTypeCreateActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ItemTypePickerActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ItemsListActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.ItemTypesListActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

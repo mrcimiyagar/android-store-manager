@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.adapters.PagerAdapter;
+import kasper.android.store_manager.behaviours.UpdatablePage;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.extensions.AppBarStateChangeListener;
 import kasper.android.store_manager.fragments.lists.CategoriesListFragment;
@@ -29,7 +30,7 @@ public class ListsBookActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
 
-    Fragment[] pageFragments;
+    UpdatablePage[] pageFragments;
     String[] pageTitles;
 
     ImageView logoIV;
@@ -123,7 +124,7 @@ public class ListsBookActivity extends AppCompatActivity {
 
     private void initPages() {
 
-        this.pageFragments = new Fragment[] {
+        this.pageFragments = new UpdatablePage[] {
                 new CustomersListFragment(),
                 new FactoriesListFragment(),
                 new OrdersListFragment(),
@@ -143,9 +144,19 @@ public class ListsBookActivity extends AppCompatActivity {
         this.tabLayout.setupWithViewPager(this.viewPager);
 
         this.viewPager.setCurrentItem(this.pageIndex);
+
+        this.viewPager.setOffscreenPageLimit(0);
     }
 
     public void onBackBtnClicked(View view) {
         this.onBackPressed();
+    }
+
+    public void notifyDatabaseChange(int index) {
+        for (int counter = 0; counter < pageFragments.length; counter++) {
+            if (counter != index) {
+                pageFragments[counter].update();
+            }
+        }
     }
 }

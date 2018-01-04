@@ -1,5 +1,6 @@
 package kasper.android.store_manager.models.memory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import io.realm.RealmList;
 import io.realm.RealmResults;
 import kasper.android.store_manager.models.database.*;
 
-public class Item {
+public class Item implements Serializable {
 
     private int id;
     private int itemTypeId;

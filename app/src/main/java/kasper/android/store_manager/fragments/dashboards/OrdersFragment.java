@@ -21,6 +21,7 @@ import kasper.android.store_manager.R;
 import kasper.android.store_manager.activities.ListsBookActivity;
 import kasper.android.store_manager.adapters.CategoriesAdapter;
 import kasper.android.store_manager.adapters.ItemsTagsAdapter;
+import kasper.android.store_manager.behaviours.UpdatablePage;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.extras.HorizontalLinearDecoration;
 import kasper.android.store_manager.extras.LinearDecoration;
@@ -34,7 +35,7 @@ import kasper.android.store_manager.models.memory.Tag;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OrdersFragment extends Fragment {
+public class OrdersFragment extends Fragment implements UpdatablePage {
 
 
     private RecyclerView tagsRV;
@@ -191,5 +192,10 @@ public class OrdersFragment extends Fragment {
         totalValueStr = new StringBuilder(totalValueStr).reverse().toString();
 
         totalValueTV.setText(totalValueStr);
+    }
+
+    @Override
+    public void update() {
+
     }
 }

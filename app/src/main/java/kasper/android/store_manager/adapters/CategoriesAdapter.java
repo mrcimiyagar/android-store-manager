@@ -1,15 +1,19 @@
 package kasper.android.store_manager.adapters;
 
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
 
 import kasper.android.store_manager.R;
+import kasper.android.store_manager.activities.ListsBookActivity;
 import kasper.android.store_manager.callbacks.OnCategorySelectedListener;
+import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.models.memory.Category;
 import kasper.android.store_manager.models.memory.Item;
 
@@ -19,17 +23,24 @@ import kasper.android.store_manager.models.memory.Item;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.CatVH> {
 
+    AppCompatActivity activity;
     List<Category> categories;
     OnCategorySelectedListener selectCallback;
 
-    public CategoriesAdapter(List<Category> categories) {
-        this.categories = categories;
-        this.notifyDataSetChanged();
-    }
+    boolean deleteAbility = false;
 
     public CategoriesAdapter(List<Category> categories, OnCategorySelectedListener selectCallback) {
         this.categories = categories;
         this.selectCallback = selectCallback;
+        this.deleteAbility = false;
+        this.notifyDataSetChanged();
+    }
+
+    public CategoriesAdapter(AppCompatActivity activity, List<Category> categories, OnCategorySelectedListener selectCallback) {
+        this.activity = activity;
+        this.categories = categories;
+        this.selectCallback = selectCallback;
+        this.deleteAbility = true;
         this.notifyDataSetChanged();
     }
 
@@ -39,7 +50,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     }
 
     @Override
-    public void onBindViewHolder(CatVH holder, int position) {
+    public void onBindViewHolder(final CatVH holder, final int position) {
         final Category category = this.categories.get(position);
 
         holder.nameTV.setText(category.getName());
@@ -55,6 +66,22 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
                 }
             }
         });
+
+        if (deleteAbility) {
+            holder.deleteBTN.setVisibility(View.VISIBLE);
+            holder.deleteBTN.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Core.getInstance().getDatabaseHelper().deleteCategory(category.getId());
+                    ((ListsBookActivity) activity).notifyDatabaseChange(3);
+                    categories.remove(position);
+                    notifyItemRemoved(position);
+                }
+            });
+        }
+        else {
+            holder.deleteBTN.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -68,6 +95,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         TextView categoriesCountTV;
         TextView iTypeCountTV;
         TextView iUnitCountTV;
+        ImageButton deleteBTN;
 
         CatVH(View itemView) {
             super(itemView);
@@ -75,6 +103,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
             this.categoriesCountTV = itemView.findViewById(R.id.adapter_categories_category_count);
             this.iTypeCountTV = itemView.findViewById(R.id.adapter_categories_item_type_count);
             this.iUnitCountTV = itemView.findViewById(R.id.adapter_categories_item_unit_count);
+            this.deleteBTN = itemView.findViewById(R.id.adapter_categories_delete_button);
         }
     }
 }

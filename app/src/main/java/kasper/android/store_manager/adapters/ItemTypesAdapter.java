@@ -1,15 +1,20 @@
 package kasper.android.store_manager.adapters;
 
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
 
 import kasper.android.store_manager.R;
+import kasper.android.store_manager.activities.ListsBookActivity;
 import kasper.android.store_manager.callbacks.OnItemTypeSelectedListener;
+import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.models.memory.ItemType;
 
 /**
@@ -18,12 +23,23 @@ import kasper.android.store_manager.models.memory.ItemType;
 
 public class ItemTypesAdapter extends RecyclerView.Adapter<ItemTypesAdapter.ItemVH> {
 
+    private AppCompatActivity activity;
     private List<ItemType> itemTypes;
     private OnItemTypeSelectedListener callback;
+    private boolean deleteAbility = false;
 
     public ItemTypesAdapter(List<ItemType> itemTypes, OnItemTypeSelectedListener callback) {
         this.itemTypes = itemTypes;
         this.callback = callback;
+        this.deleteAbility = false;
+        this.notifyDataSetChanged();
+    }
+
+    public ItemTypesAdapter(AppCompatActivity activity, List<ItemType> itemTypes, OnItemTypeSelectedListener callback) {
+        this.activity = activity;
+        this.itemTypes = itemTypes;
+        this.callback = callback;
+        this.deleteAbility = true;
         this.notifyDataSetChanged();
     }
 
@@ -33,7 +49,7 @@ public class ItemTypesAdapter extends RecyclerView.Adapter<ItemTypesAdapter.Item
     }
 
     @Override
-    public void onBindViewHolder(ItemVH holder, int position) {
+    public void onBindViewHolder(final ItemVH holder, final int position) {
         final ItemType itemType = this.itemTypes.get(position);
 
         holder.nameTV.setText(itemType.getTitle());
@@ -46,6 +62,23 @@ public class ItemTypesAdapter extends RecyclerView.Adapter<ItemTypesAdapter.Item
                 callback.itemTypeSelected(itemType);
             }
         });
+
+        if (deleteAbility) {
+            holder.deleteBTN.setVisibility(View.VISIBLE);
+            holder.deleteBTN.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Core.getInstance().getDatabaseHelper().deleteItemType(itemType.getId());
+                    ((ListsBookActivity) activity).notifyDatabaseChange(4);
+                    itemTypes.remove(position);
+                    notifyItemRemoved(position);
+                }
+            });
+        }
+        else {
+            holder.deleteBTN.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -58,12 +91,14 @@ public class ItemTypesAdapter extends RecyclerView.Adapter<ItemTypesAdapter.Item
         TextView nameTV;
         TextView priceTV;
         TextView countTV;
+        ImageButton deleteBTN;
 
         ItemVH(View itemView) {
             super(itemView);
             this.nameTV = itemView.findViewById(R.id.adapter_item_types_name_text_view);
             this.priceTV = itemView.findViewById(R.id.adapter_item_types_price_text_view);
             this.countTV = itemView.findViewById(R.id.adapter_item_types_count_text_view);
+            this.deleteBTN = itemView.findViewById(R.id.adapter_item_types_delete_button);
         }
     }
 }

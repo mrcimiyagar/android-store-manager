@@ -100,6 +100,13 @@
 
         </FrameLayout>
 
+        <ImageButton
+            android:id="@+id/adapter_item_types_delete_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_delete"
+            android:background="@android:color/transparent"/>
+
     </android.support.v7.widget.CardView>
 
 </RelativeLayout>

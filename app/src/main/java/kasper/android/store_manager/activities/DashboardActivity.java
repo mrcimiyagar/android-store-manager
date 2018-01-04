@@ -25,6 +25,7 @@ import com.kennyc.bottomsheet.BottomSheetListener;
 
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.adapters.PagerAdapter;
+import kasper.android.store_manager.behaviours.UpdatablePage;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.extensions.AppBarStateChangeListener;
 import kasper.android.store_manager.fragments.dashboards.ItemsFragment;
@@ -42,7 +43,7 @@ public class DashboardActivity extends AppCompatActivity {
     ViewPager viewPager;
 
     String[] pageTitles;
-    Fragment[] pageFragments;
+    UpdatablePage[] pageFragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,7 +172,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void initPages() {
 
-        this.pageFragments = new Fragment[] {
+        this.pageFragments = new UpdatablePage[] {
                 new OrdersFragment(),
                 new ItemsFragment()
         };

@@ -4,12 +4,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import kasper.android.store_manager.behaviours.UpdatablePage;
+
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
     private String[] titles;
-    private Fragment[] fragments;
+    private UpdatablePage[] fragments;
 
-    public PagerAdapter(FragmentManager fm, String[] titles, Fragment[] fragments) {
+    public PagerAdapter(FragmentManager fm, String[] titles, UpdatablePage[] fragments) {
         super(fm);
         this.titles = titles;
         this.fragments = fragments;
@@ -17,7 +19,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return this.fragments[position];
+        return (Fragment) this.fragments[position];
     }
 
     @Override

@@ -3,6 +3,7 @@ package kasper.android.store_manager.fragments.lists;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import io.realm.Realm;
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.activities.CategoryDetailsActivity;
 import kasper.android.store_manager.adapters.CategoriesAdapter;
+import kasper.android.store_manager.behaviours.UpdatablePage;
 import kasper.android.store_manager.callbacks.OnCategorySelectedListener;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.extras.LinearDecoration;
@@ -23,12 +25,12 @@ import kasper.android.store_manager.models.memory.Category;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CategoriesListFragment extends Fragment {
+public class CategoriesListFragment extends Fragment implements UpdatablePage {
 
     RecyclerView recyclerView;
 
     private int parentCategoryId = -1;
-    public CategoriesListFragment setParentCategoryId(int id) {
+    public UpdatablePage setParentCategoryId(int id) {
         this.parentCategoryId = id;
         return this;
     }
@@ -46,6 +48,14 @@ public class CategoriesListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new LinearDecoration((int) Core.getInstance().dpToPx(24), (int) Core.getInstance().dpToPx(16)));
 
+        update();
+
+        return contentView;
+    }
+
+    @Override
+    public void update() {
+
         List<Category> categories;
 
         if (this.parentCategoryId >= 0) {
@@ -57,7 +67,7 @@ public class CategoriesListFragment extends Fragment {
             categories = Core.getInstance().getDatabaseHelper().getCategories();
         }
 
-        recyclerView.setAdapter(new CategoriesAdapter(categories
+        recyclerView.setAdapter(new CategoriesAdapter((AppCompatActivity) getActivity(), categories
                 , new OnCategorySelectedListener() {
             @Override
             public void categorySelected(Category category) {
@@ -65,7 +75,5 @@ public class CategoriesListFragment extends Fragment {
                 startActivity(new Intent(getActivity(), CategoryDetailsActivity.class).putExtra("category", category));
             }
         }));
-
-        return contentView;
     }
 }

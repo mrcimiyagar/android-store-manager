@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import kasper.android.store_manager.R;
 import kasper.android.store_manager.adapters.PagerAdapter;
+import kasper.android.store_manager.behaviours.UpdatablePage;
 import kasper.android.store_manager.core.Core;
 import kasper.android.store_manager.extensions.AppBarStateChangeListener;
 import kasper.android.store_manager.fragments.lists.CategoriesListFragment;
@@ -26,7 +27,7 @@ public class CategoryDetailsActivity extends AppCompatActivity {
     TextView minTitleTV;
 
     String[] pageTitles;
-    Fragment[] pageFragments;
+    UpdatablePage[] pageFragments;
 
     Category category;
 
@@ -81,7 +82,7 @@ public class CategoryDetailsActivity extends AppCompatActivity {
                 "کالا ها", "دسته ها"
         };
 
-        this.pageFragments = new Fragment[] {
+        this.pageFragments = new UpdatablePage[] {
                 new ItemTypesListFragment().setParentCategoryId(category.getId()),
                 new CategoriesListFragment().setParentCategoryId(category.getId())
         };
